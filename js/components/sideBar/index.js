@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Content, Text, List, ListItem } from 'native-base';
+import { firebaseApp } from "../auth/authentication"
 
+import { actions } from 'react-native-navigation-redux-helpers';
 import { setIndex } from '../../actions/list';
 import navigateTo from '../../actions/sideBarNav';
 import myTheme from '../../themes/base-theme';
 
 import styles from './styles';
+
+const {
+  reset,
+  pushRoute,
+} = actions;
 
 class SideBar extends Component {
 
@@ -17,6 +24,15 @@ class SideBar extends Component {
 
   navigateTo(route) {
     this.props.navigateTo(route, 'home');
+  }
+
+  signOut() {
+    firebaseApp.auth().signOut()
+      .then(() => {
+        this.props.reset(this.props.navigation.key)
+      }, (error) => {
+        console.log(error)
+      })
   }
 
   render() {
@@ -32,6 +48,9 @@ class SideBar extends Component {
           <ListItem button onPress={() => this.navigateTo('cart')} >
             <Text>Cart</Text>
           </ListItem>
+          <ListItem button onPress={() => this.signOut()} >
+            <Text>Sign Out</Text>
+          </ListItem>
         </List>
       </Content>
     );
@@ -42,6 +61,7 @@ function bindAction(dispatch) {
   return {
     setIndex: index => dispatch(setIndex(index)),
     navigateTo: (route, homeRoute) => dispatch(navigateTo(route, homeRoute)),
+    reset: key => dispatch(reset([{ key: 'login' }], key, 0)),
   };
 }
 

@@ -3,7 +3,7 @@ import { ListView } from "react-native";
 import MapView from "react-native-maps";
 import styles from "./styles";
 import { locations } from "../auth/authentication";
-import { Container, Content, InputGroup, Input, Button, Icon, View, Text } from 'native-base';
+import { Container, Header, Title, Content, InputGroup, Input, Button, Icon, View, Text } from 'native-base';
 
 import { connect } from 'react-redux';
 import { actions } from 'react-native-navigation-redux-helpers';
@@ -21,16 +21,29 @@ const {
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
 class Locations extends Component {
-  constructor() {
-    super();
+
+  static propTypes = {
+    name: React.PropTypes.string,
+    list: React.PropTypes.arrayOf(React.PropTypes.string),
+    setIndex: React.PropTypes.func,
+    openDrawer: React.PropTypes.func,
+    pushRoute: React.PropTypes.func,
+    reset: React.PropTypes.func,
+    navigation: React.PropTypes.shape({
+      key: React.PropTypes.string,
+    }),
+  }
+
+  constructor(props) {
+    super(props);
     this.state = ({
       dataSource: ds,
       currentRegion: {},
       region: {
         latitude: 37.893,
         longitude: -122.08,
-        latitudeDelta: 0.52,
-        longitudeDelta: 0.38
+        latitudeDelta: 0.22,
+        longitudeDelta: 0.13
       }
     });
   }
@@ -53,8 +66,8 @@ class Locations extends Component {
         this.setState({ currentRegion: {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
-          latitudeDelta: 0.52,
-          longitudeDelta: 0.38
+          latitudeDelta: 0.22,
+          longitudeDelta: 0.13
         } });
       },
       (error) => alert(error.message),
@@ -75,6 +88,10 @@ class Locations extends Component {
   //   // this.setState({ currentRegion })
   // }
 
+  popRoute() {
+    this.props.popRoute(this.props.navigation.key);
+  }
+
   renderRow(rowData) {
     console.log(locations);
     return (
@@ -89,6 +106,15 @@ class Locations extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Header sytle={styles.header}>
+          <Button transparent onPress={() => this.popRoute()}>
+            <Icon name='ios-arrow-back' />
+          </Button>
+          <Title>Locations</Title>
+          <Button transparent onPress={this.props.openDrawer}>
+              <Icon name='ios-menu' />
+          </Button>
+        </Header>
         <View
           style={styles.mapContainer}
         >
@@ -121,7 +147,7 @@ class Locations extends Component {
           dataSource={this.state.dataSource}
           renderRow={(rowData) => this.renderRow(rowData)}
         />
-      </View>
+    </View>
     );
   }
 }

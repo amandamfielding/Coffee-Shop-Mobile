@@ -37,8 +37,8 @@ class Order extends Component {
     }),
   }
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = ({
       dataSource1: ds1,
       dataSource2: ds2,
@@ -120,7 +120,7 @@ class Order extends Component {
           <Button transparent onPress={() => this.popRoute()}>
             <Icon name='ios-arrow-back' />
           </Button>
-          <Title>{(this.props.name) ? this.props.name : 'Home'}</Title>
+          <Title>Place an Order</Title>
           <Button transparent onPress={this.props.openDrawer}>
               <Icon name='ios-menu' />
           </Button>
@@ -188,7 +188,6 @@ function bindAction(dispatch) {
 }
 
 const mapStateToProps = state => ({
-  name: state.user.name,
   list: state.list.list,
   navigation: state.cardNavigation,
 });

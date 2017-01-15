@@ -12,7 +12,7 @@ import SignUp from './components/auth/signUp/';
 import ForgotPassword from './components/auth/forgotPassword';
 import Order from './components/order/';
 import Cart from './components/cart/';
-import Loctions from './components/locations/';
+import Locations from './components/locations/';
 
 const {
   popRoute,
@@ -71,7 +71,7 @@ class AppNavigator extends Component {
     }
   }
 
-  _renderScene(props) { // eslint-disable-line class-methods-use-this
+  _renderScene(props) {
     switch (props.scene.route.key) {
       case 'splashscreen':
         return <SplashPage />;

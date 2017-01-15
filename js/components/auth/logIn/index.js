@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Image, Text } from 'react-native';
+import { Image } from 'react-native';
 import { connect } from 'react-redux';
 import { actions } from 'react-native-navigation-redux-helpers';
-import { Container, Content, InputGroup, Input, Button, Icon, View } from 'native-base';
+import { Container, Text, Content, InputGroup, Input, Button, Icon, View } from 'native-base';
 import * as firebase from "firebase";
 import { firebaseApp } from "../authentication";
 
@@ -18,7 +18,6 @@ const background = require('../../../../images/beans2.jpg');
 class Login extends Component {
 
   static propTypes = {
-    setUser: React.PropTypes.func,
     replaceAt: React.PropTypes.func,
     navigation: React.PropTypes.shape({
       key: React.PropTypes.string,
@@ -26,8 +25,7 @@ class Login extends Component {
   }
 
   replaceRoute(route) {
-    // this.setUser(this.state.name);
-    this.props.replaceAt('logIn', { key: route }, this.props.navigation.key);
+    this.props.replaceAt('logIn', { key: route, index: 0 }, this.props.navigation.key);
   }
 
   constructor(props) {
@@ -42,7 +40,7 @@ class Login extends Component {
   componentDidMount() {
     firebaseApp.auth().onAuthStateChanged(user => {
       if (user) {
-        this.replaceRoute('locations');
+        this.replaceRoute('order');
       }
     });
   }
@@ -106,7 +104,6 @@ class Login extends Component {
 function bindActions(dispatch) {
   return {
     replaceAt: (routeKey, route, key) => dispatch(replaceAt(routeKey, route, key)),
-    // setUser: name => dispatch(setUser(name)),
   };
 }
 

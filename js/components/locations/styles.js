@@ -10,7 +10,7 @@ container: {
     justifyContent: "center"
   },
   mapContainer: {
-    flex: 2
+    flex: 1
   },
   map: {
     position: "absolute",
