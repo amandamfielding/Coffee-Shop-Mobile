@@ -1,0 +1,8 @@
+{
+  "exponentServerNgrokUrl": "https://k8-3v8.amandamfielding.coffeeshopmobile2.exp.direct",
+  "packagerNgrokUrl": "https://packager.k8-3v8.amandamfielding.coffeeshopmobile2.exp.direct",
+  "ngrokPid": 30634,
+  "exponentServerPort": 19000,
+  "packagerPort": 19003,
+  "packagerPid": 30618
+}

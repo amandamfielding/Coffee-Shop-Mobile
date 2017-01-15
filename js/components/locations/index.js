@@ -1,0 +1,144 @@
+import React, { Component } from "react";
+import { ListView } from "react-native";
+import MapView from "react-native-maps";
+import styles from "./styles";
+import { locations } from "../auth/authentication";
+import { Container, Content, InputGroup, Input, Button, Icon, View, Text } from 'native-base';
+
+import { connect } from 'react-redux';
+import { actions } from 'react-native-navigation-redux-helpers';
+import { openDrawer } from '../../actions/drawer';
+import { setIndex } from '../../actions/list';
+import myTheme from '../../themes/base-theme';
+
+const {
+  reset,
+  pushRoute,
+} = actions;
+
+
+
+const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+
+class Locations extends Component {
+  constructor() {
+    super();
+    this.state = ({
+      dataSource: ds,
+      currentRegion: {},
+      region: {
+        latitude: 37.893,
+        longitude: -122.08,
+        latitudeDelta: 0.52,
+        longitudeDelta: 0.38
+      }
+    });
+  }
+
+  componentDidMount() {
+    locations.on("value", (snap) => {
+      const locationList = [];
+      snap.forEach(item => {
+        locationList.push({
+          title: item.val().title,
+          address: item.val().address,
+          phone: item.val().phone
+        });
+      });
+      this.setState({ dataSource: ds.cloneWithRows(locationList) });
+    });
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+       console.log(position);
+        this.setState({ currentRegion: {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          latitudeDelta: 0.52,
+          longitudeDelta: 0.38
+        } });
+      },
+      (error) => alert(error.message),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+    );
+    this.watchID = navigator.geolocation.watchPosition((position) => {
+       console.log(position);
+      this.setState({ currentRegion: {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          latitudeDelta: 0.16,
+          longitudeDelta: 0.11
+        } });
+    });
+  }
+
+  // onRegionChange(currentRegion) {
+  //   // this.setState({ currentRegion })
+  // }
+
+  renderRow(rowData) {
+    console.log(locations);
+    return (
+    <View style={styles.location}>
+      <Text style={styles.locationTitle}>{rowData.title}</Text>
+      <Text>{rowData.address}</Text>
+      <Text>{rowData.phone}</Text>
+    </View>
+  );
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <View
+          style={styles.mapContainer}
+        >
+          <MapView
+            style={styles.map}
+            region={this.state.region}
+            initialRegion={this.state.region}
+            onRegionChange={this.onRegionChange}
+            showsUserLocation={true}
+            zoomEnabled={true}
+          >
+            <MapView.Marker
+              coordinate={{
+                latitude: 37.897735,
+                longitude: -122.061793
+              }}
+              title="Walnut Creek Coffee Shop"
+            />
+            <MapView.Marker
+              coordinate={{
+                latitude: 37.890723,
+                longitude: -122.120401
+              }}
+              title="Lafayette Coffee Shop"
+            />
+          </MapView>
+        </View>
+        <ListView
+          style={styles.locations}
+          dataSource={this.state.dataSource}
+          renderRow={(rowData) => this.renderRow(rowData)}
+        />
+      </View>
+    );
+  }
+}
+
+function bindAction(dispatch) {
+  return {
+    setIndex: index => dispatch(setIndex(index)),
+    openDrawer: () => dispatch(openDrawer()),
+    pushRoute: (route, key) => dispatch(pushRoute(route, key)),
+    reset: key => dispatch(reset([{ key: 'login' }], key, 0)),
+  };
+}
+
+const mapStateToProps = state => ({
+  name: state.user.name,
+  list: state.list.list,
+  navigation: state.cardNavigation,
+});
+
+export default connect(mapStateToProps, bindAction)(Locations);
