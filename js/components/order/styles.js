@@ -18,17 +18,15 @@ module.exports = StyleSheet.create({
     flex: 1
   },
   rowTitle: {
-    color: "black",
+    color: "white",
   },
   row: {
-    backgroundColor: "white",
-    borderColor: "black",
-    borderWidth: 1,
+    backgroundColor: "black",
+    borderColor: "grey",
     borderRadius: 5,
-    padding: 5
   },
   menuCategory: {
-    color: "white",
+    color: "black",
     backgroundColor: "gold",
     margin: 2,
     padding: 8

@@ -55,7 +55,8 @@ class Locations extends Component {
         locationList.push({
           title: item.val().title,
           address: item.val().address,
-          phone: item.val().phone
+          phone: item.val().phone,
+          hours: item.val().hours
         });
       });
       this.setState({ dataSource: ds.cloneWithRows(locationList) });
@@ -93,12 +94,12 @@ class Locations extends Component {
   }
 
   renderRow(rowData) {
-    console.log(locations);
     return (
     <View style={styles.location}>
       <Text style={styles.locationTitle}>{rowData.title}</Text>
       <Text>{rowData.address}</Text>
       <Text>{rowData.phone}</Text>
+      <Text>{rowData.hours}</Text>
     </View>
   );
   }

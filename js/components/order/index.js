@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { TouchableOpacity, ScrollView, ListView } from 'react-native';
 import { connect } from 'react-redux';
 import { actions } from 'react-native-navigation-redux-helpers';
-import { Container, Header, View, Title, Content, Text, Button, Icon } from 'native-base';
+import { Container, Header, View, Title, Content, Text, Button, Icon, Card, CardItem } from 'native-base';
 import { Grid, Row } from 'react-native-easy-grid';
 
 import { openDrawer } from '../../actions/drawer';
@@ -98,9 +98,11 @@ class Order extends Component {
 
   renderRow(rowData) {
     return (
-      <View style={styles.row}>
+      <Card style={styles.row}>
+        <CardItem>
           <Text style={styles.rowTitle}>{rowData.title}</Text>
-      </View>
+        </CardItem>
+      </Card>
     )
   }
 

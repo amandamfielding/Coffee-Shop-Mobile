@@ -1,0 +1,398 @@
+{
+	"drinks": {
+    "coffee": {
+      "1": {
+        "title": "Drip Coffee",
+        "sizes": [
+          {"10oz": {
+            "price": 2.5
+          }},
+          {"16oz": {
+            "price": 3
+          }}
+        ]
+      },
+      "2": {
+        "title": "Espresso",
+        "sizes": [
+        {"1oz": {
+            "price": 2.95
+          }}
+        ]
+      },
+      "3": {
+        "title": "Macchiato",
+        "sizes": [
+        {"6oz": {
+            "price": 3.5
+          }}
+        ]
+      },
+      "4": {
+        "title": "Gibraltar",
+        "sizes": [
+        {"6oz": {
+            "price": 3.5
+          }}
+        ]
+      },
+      "5": {
+        "title": "Cappuccino",
+        "sizes": [
+        {"6oz": {
+            "price": 3.5
+          }}
+        ]
+      },
+      "6": {
+        "title": "Americano",
+        "sizes": [
+        {"10oz": {
+            "price": 3.25
+          }}
+        ]
+      },
+      "7": {
+        "title": "Latte",
+        "sizes": [
+        {"10oz": {
+            "price": 3.95
+          },
+          "16oz": {
+            "price": 4.5
+          }}
+        ]
+      },
+      "8": {
+        "title": "Mocha",
+        "sizes": [
+        {"10oz": {
+            "price": 4.25
+          },
+          "16oz": {
+            "price": 4.95
+          }}
+        ]
+      },
+      "9": {
+        "title": "Hot Chocolate",
+        "sizes": [
+        {"10oz": {
+            "price": 3.25
+          },
+          "16oz": {
+            "price": 3.75
+          }}
+        ]
+      },
+      "10": {
+        "title": "Cold Brew Coffee",
+        "sizes": [
+        {"10oz": {
+            "price": 3.25
+          },
+          "16oz": {
+            "price": 3.75
+          }}
+        ]
+      }
+    },
+    "tea": {
+      "11": {
+        "title": "Chai Latte",
+        "sizes": [
+        {"10oz": {
+            "price": 4.5
+          },
+          "16oz": {
+            "price": 5
+          }}
+        ]
+      },
+      "12": {
+        "title": "Black",
+        "hot": false,
+        "sizes": [
+          {"10oz": {
+            "price": 4.5
+          }},
+          {"16oz": {
+            "price": 5
+          }}
+        ]
+      },
+      "13": {
+        "title": "Green",
+        "hot": false,
+        "sizes": [
+          {"10oz": {
+            "price": 4.5
+          }},
+          {"16oz": {
+            "price": 5
+          }}
+        ]
+      },
+      "14": {
+        "title": "Herbal",
+        "hot": false,
+        "sizes": [
+          {"10oz": {
+            "price": 4.5
+          }},
+          {"16oz": {
+            "price": 5
+          }}
+        ]
+      },
+      "15": {
+        "title": "Oolong",
+        "sizes": [
+          {"10oz": {
+            "price": 4.5
+          }}
+        ]
+      },
+      "16": {
+        "title": "Sweet Pineapple Mango Black",
+        "hot": false,
+        "sizes": [
+          {"10oz": {
+            "price": 3.25
+          }},
+          {"16oz": {
+            "price": 3.75
+          }},
+          {"32oz": {
+            "price": 3.95
+          }}
+        ]
+      },
+      "17": {
+        "title": "Sweet Peach Green",
+        "hot": false,
+        "sizes": [
+          {"10oz": {
+            "price": 3.25
+          }},
+          {"16oz": {
+            "price": 3.75
+          }},
+          {"32oz": {
+            "price": 3.95
+          }}
+        ]
+      },
+      "18": {
+        "title": "Sweet Berry Hibiscus",
+        "hot": false,
+        "sizes": [
+          {"10oz": {
+            "price": 3.25
+          }},
+          {"16oz": {
+            "price": 3.75
+          }},
+          {"32oz": {
+            "price": 3.95
+          }}
+        ]
+      }
+    },
+    "local-favorites": {
+      "19": {
+        "title": "Minted Iced Cold Brew",
+        "sizes": [
+          {"10oz": {
+            "price": 4.5
+          }},
+          {"16oz": {
+            "price": 5
+          }}
+        ]
+      },
+      "20": {
+        "title": "Coconut Orange Iced Latte",
+        "sizes": [
+          {"10oz": {
+            "price": 4.5
+          }},
+          {"16oz": {
+            "price": 5
+          }}
+        ]
+      },
+      "21": {
+        "title": "Ginger Snap Latte",
+        "hot": false,
+        "sizes": [
+          {"10oz": {
+            "price": 4.5
+          }},
+          {"16oz": {
+            "price": 5
+          }}
+        ]
+      },
+      "22": {
+        "title": "White Mocha",
+        "hot": false,
+        "sizes": [
+          {"10oz": {
+            "price": 4.5
+          }},
+          {"16oz": {
+            "price": 5
+          }}
+        ]
+      },
+      "23": {
+        "title": "Mocha Glacier",
+        "sizes": [
+          {"10oz": {
+            "price": 4.5
+          }},
+          {"16oz": {
+            "price": 4.95
+          }},
+          {"20oz": {
+            "price": 6.5
+          }}
+        ]
+      },
+      "24": {
+        "title": "Chiller Latte",
+        "sizes": [
+          {"10oz": {
+            "price": 4.5
+          }},
+          {"16oz": {
+            "price": 4.95
+          }},
+          {"20oz": {
+            "price": 6.5
+          }}
+        ]
+      },
+      "25": {
+        "title": "Strawberry Banana Smoothie",
+        "sizes": [
+          {"10oz": {
+            "price": 4.5
+          }},
+          {"16oz": {
+            "price": 4.95
+          }},
+          {"20oz": {
+            "price": 6.5
+          }}
+        ]
+      },
+      "26": {
+        "title": "Peach Mango Smoothie",
+        "sizes": [
+          {"10oz": {
+            "price": 4.5
+          }},
+          {"16oz": {
+            "price": 4.95
+          }},
+          {"20oz": {
+            "price": 6.5
+          }}
+        ]
+      },
+      "27": {
+        "title": "Very Berry Smoothie",
+        "sizes": [
+          {"10oz": {
+            "price": 4.5
+          }},
+          {"16oz": {
+            "price": 4.95
+          }},
+          {"20oz": {
+            "price": 6.5
+          }}
+        ]
+      }
+    },
+    "smoothies": {
+      "28": {
+        "title": "Berry Energy",
+        "ingredients": "acai, blueberry, banana, orange juice",
+        "sizes": [
+          {"20oz": {
+            "price": 9
+          }}
+        ]
+      },
+      "29": {
+        "title": "Strawberry Mango Coconut",
+        "ingredients": "strawberry, mango, coconut milk, orange juice",
+        "sizes": [
+          {"20oz": {
+            "price": 9
+          }}
+        ]
+      },
+      "30": {
+        "title": "Peanut Butter Banana",
+        "ingredients": "banana, peanut butter, coconut milk, almond milk",
+        "sizes": [
+          {"20oz": {
+            "price": 9
+          }}
+        ]
+      },
+      "31": {
+        "title": "Power Greens",
+        "ingredients": "kale, cucumber, spinach, celery, pineapple, protein",
+        "sizes": [
+          {"20oz": {
+            "price": 9
+          }}
+        ]
+      }
+    },
+    "fresh-pressed-juice": {
+      "32": {
+        "title": "Power Greens",
+        "ingredients": "kale, spinach, cucumber, celery, apple, lemon juice",
+        "sizes": [
+          {"16oz": {
+            "price": 9
+          }}
+        ]
+      },
+      "33": {
+        "title": "Detox",
+        "ingredients": "carrot, cucumber, apple, ginger, lemon juice",
+        "sizes": [
+          {"16oz": {
+            "price": 9
+          }}
+        ]
+      }
+    }
+	},
+	"users": {},
+	"locations": {
+    "1": {
+			"hours": "SUN-MON: 6:30-8, TUE-THU: 6:30-10, FRI-SAT: 6:30-11",
+      "title": "Walnut Creek",
+      "address": "1321 Locust Street Walnut Creek, CA 94596",
+      "lat": 37.897735,
+      "lng": -122.061793,
+			"phone": 9259383855
+    },
+    "2": {
+			"hours": "SUN-THU: 6:30-9, FRI-SAT: 6:30-9:30",
+      "title": "Lafayette",
+      "address": "50 Lafayette Circle Lafayette, CA 94549",
+      "lat": 37.890723,
+      "lng": -122.120401,
+			"phone": 9259629537
+    }
+  }
+}

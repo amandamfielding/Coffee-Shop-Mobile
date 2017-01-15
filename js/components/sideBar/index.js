@@ -5,6 +5,7 @@ import { firebaseApp } from "../auth/authentication"
 
 import { actions } from 'react-native-navigation-redux-helpers';
 import { setIndex } from '../../actions/list';
+import { closeDrawer } from '../../actions/drawer';
 import navigateTo from '../../actions/sideBarNav';
 import myTheme from '../../themes/base-theme';
 
@@ -22,6 +23,10 @@ class SideBar extends Component {
     navigateTo: React.PropTypes.func,
   }
 
+  constructor(props) {
+    super(props)
+  }
+
   navigateTo(route) {
     this.props.navigateTo(route, 'home');
   }
@@ -33,6 +38,7 @@ class SideBar extends Component {
       }, (error) => {
         console.log(error)
       })
+    this.props.closeDrawer();
   }
 
   render() {
@@ -62,6 +68,7 @@ function bindAction(dispatch) {
     setIndex: index => dispatch(setIndex(index)),
     navigateTo: (route, homeRoute) => dispatch(navigateTo(route, homeRoute)),
     reset: key => dispatch(reset([{ key: 'login' }], key, 0)),
+    closeDrawer: () => dispatch(closeDrawer()),
   };
 }
 
