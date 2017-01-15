@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
+import { Image, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { actions } from 'react-native-navigation-redux-helpers';
 import { Container, Text, Content, InputGroup, Input, Button, Icon, View } from 'native-base';
 import * as firebase from "firebase";
 import { firebaseApp } from "../authentication";
+import Exponent from 'exponent';
 
 // import { setUser } from '../../actions/user';
 import styles from './styles';
@@ -33,11 +34,32 @@ class Login extends Component {
     this.state = ({
       email: "",
       password: "",
-      result: ""
+      result: "",
+      FBloggedIn: false
     });
   }
 
-  componentDidMount() {
+  async FBlogIn() {
+    const { type, token } = await Exponent.Facebook.logInWithReadPermissionsAsync(
+      '1831068953774364', {
+        permissions: ['public_profile'],
+      });
+    if (type === 'success') {
+      const credential = firebase.auth.FacebookAuthProvider.credential(token);
+      firebase.auth().signInWithCredential(credential).then(() => {this.setState({FBloggedIn: true})})
+        .catch((error) => {
+          alert("error");
+      });
+      const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
+      Alert.alert(
+        'Logged in!',
+        `Hi ${(await response.json()).name}!`,
+      );
+
+    }
+  }
+
+  componentWillUpdate() {
     firebaseApp.auth().onAuthStateChanged(user => {
       if (user) {
         this.replaceRoute('order');
@@ -59,6 +81,9 @@ class Login extends Component {
       <Container>
         <View style={styles.container}>
           <Content>
+            <Button style={styles.btn} onPress={() => {this.FBlogIn()}}>
+              <Text>FB</Text>
+            </Button>
             <Image source={background} style={styles.shadow}>
               <View style={styles.bg}>
                 <Text style={styles.feedback}>{this.state.result}</Text>
