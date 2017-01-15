@@ -81,11 +81,20 @@ class Login extends Component {
       <Container>
         <View style={styles.container}>
           <Content>
-            <Button style={styles.btn} onPress={() => {this.FBlogIn()}}>
-              <Text>FB</Text>
-            </Button>
             <Image source={background} style={styles.shadow}>
               <View style={styles.bg}>
+                <Button style={styles.GPbutton}>
+                  <View style={styles.GPflex}>
+                    <Text style={styles.GPtext}>Sign in with Google</Text>
+                    <Image style={styles.GPimage} source={{uri:"http://www.iconsdb.com/icons/preview/white/google-plus-xxl.png"}} />
+                  </View>
+                </Button>
+                  <Button onPress={() => {this.FBlogIn()}} style={styles.FBbutton}>
+                    <View style={styles.FBflex}>
+                      <Text style={styles.FBtext}>Sign in with Facebook</Text>
+                      <Image style={styles.FBimage} source={{uri:"http://icons.iconarchive.com/icons/danleech/simple/512/facebook-icon.png"}} />
+                    </View>
+                </Button>
                 <Text style={styles.feedback}>{this.state.result}</Text>
                 <InputGroup style={styles.input}>
                   <Icon name="ios-person" />

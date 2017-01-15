@@ -21,7 +21,7 @@ module.exports = StyleSheet.create({
   },
   bg: {
     flex: 1,
-    marginTop: deviceHeight / 1.75,
+    marginTop: deviceHeight / 2.55,
     paddingTop: 20,
     paddingLeft: 10,
     paddingRight: 10,
@@ -49,6 +49,70 @@ module.exports = StyleSheet.create({
     justifyContent: "center"
   },
   links: {
-    color: "white"
+    color: "white",
+  },
+  FBimage: {
+    width: 50,
+    height: 50,
+    alignSelf: "center"
+  },
+  FBbutton: {
+    width: 225,
+    height: 50,
+    borderColor: "#2d5073",
+    backgroundColor: "#3b5998",
+    marginBottom: 15,
+    alignSelf: "center",
+    position: "relative",
+    borderRadius: 2,
+    shadowColor: "gray",
+    shadowOffset: {
+      width: 1,
+      height: 1
+    },
+    shadowRadius: 2,
+    shadowOpacity: 0.5
+  },
+  FBtext: {
+    color: "white",
+    alignSelf: "center",
+    marginRight: 15,
+    marginLeft: 15
+  },
+  FBflex: {
+    flex: 1,
+    flexDirection: "row",
+  },
+  GPimage: {
+    width: 50,
+    height: 50,
+    alignSelf: "center"
+  },
+  GPbutton: {
+    width: 225,
+    height: 50,
+    borderColor: "#111",
+    backgroundColor: "#222",
+    marginBottom: 15,
+    alignSelf: "center",
+    position: "relative",
+    borderRadius: 2,
+    shadowColor: "gray",
+    shadowOffset: {
+      width: 1,
+      height: 1
+    },
+    shadowRadius: 2,
+    shadowOpacity: 0.5
+  },
+  GPtext: {
+    color: "white",
+    alignSelf: "center",
+    marginRight: 15,
+    marginLeft: 15
+  },
+  GPflex: {
+    flex: 1,
+    flexDirection: "row",
   }
 });
