@@ -83,6 +83,11 @@ class Login extends Component {
           <Content>
             <Image source={background} style={styles.shadow}>
               <View style={styles.bg}>
+
+              <Image
+                style={styles.logoImage}
+                source={{uri:'https://firebasestorage.googleapis.com/v0/b/coffee-shop-mobile.appspot.com/o/logofritzwhite.png?alt=media&token=1c9f80e9-53ca-42cd-82b9-e6ca72c25d6f'}} />
+
                 <Button style={styles.GPbutton}>
                   <View style={styles.GPflex}>
                     <Text style={styles.GPtext}>Sign in with Google</Text>

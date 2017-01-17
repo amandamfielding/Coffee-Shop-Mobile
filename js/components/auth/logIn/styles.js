@@ -4,6 +4,7 @@ const React = require('react-native');
 const { StyleSheet, Dimensions } = React;
 
 const deviceHeight = Dimensions.get('window').height;
+const deviceWidth = Dimensions.get('window').width;
 
 module.exports = StyleSheet.create({
   container: {
@@ -20,13 +21,20 @@ module.exports = StyleSheet.create({
     height: null,
   },
   bg: {
-    flex: 1,
-    marginTop: deviceHeight / 2.55,
-    paddingTop: 20,
+    flex: 2,
+    paddingTop: 10,
     paddingLeft: 10,
     paddingRight: 10,
     paddingBottom: 30,
     bottom: 0,
+  },
+  logoImage: {
+    alignSelf: "center",
+    marginBottom: 40,
+    flex: 1,
+    width: deviceWidth / 2 ,
+    height: deviceHeight / 3,
+    resizeMode: "contain"
   },
   input: {
     marginBottom: 20
