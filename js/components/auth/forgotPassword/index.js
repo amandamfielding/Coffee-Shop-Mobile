@@ -59,7 +59,7 @@ class ForgotPassword extends React.Component {
             </InputGroup>
             <View style={styles.links}>
               <TouchableOpacity
-                onPress={() => this.replaceRoute('logIn')}
+                onPress={() => this.replaceRoute('login')}
               >
                 <Text style={styles.link}>Back</Text>
               </TouchableOpacity>

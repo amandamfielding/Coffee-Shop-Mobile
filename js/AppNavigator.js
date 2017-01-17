@@ -13,6 +13,7 @@ import ForgotPassword from './components/auth/forgotPassword';
 import Order from './components/order/';
 import Cart from './components/cart/';
 import Locations from './components/locations/';
+import Payment from './components/payment';
 
 const {
   popRoute,
@@ -87,6 +88,8 @@ class AppNavigator extends Component {
         return <Locations />;
       case 'cart':
         return <Cart />;
+      case 'payment':
+        return <Payment />;  
       default :
         return <LogIn />;
     }
