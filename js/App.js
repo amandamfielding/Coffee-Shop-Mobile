@@ -8,6 +8,7 @@ import Modal from 'react-native-modalbox';
 import AppNavigator from './AppNavigator';
 
 import theme from './themes/base-theme';
+import cacheAssetsAsync from '../utilities/cacheAssetsAsync';
 
 const styles = StyleSheet.create({
   container: {
@@ -34,6 +35,33 @@ class App extends Component {
       appIsReady: true
     };
   }
+
+  componentWillMount() {
+        this._loadAssetsAsync();
+    }
+
+  async _loadAssetsAsync() {
+        try {
+            await cacheAssetsAsync({
+                // images: [
+                //     require('./assets/images/exponent-wordmark.png'),
+                // ],
+                fonts: [
+                    // FontAwesome.font,
+                    // {'Arial': require('../assets/fonts/Arial.ttf')},
+                    // {'Roboto_medium': require('../assets/fonts/Roboto_medium.ttf')},
+                ],
+            });
+        } catch(e) {
+            console.warn(
+                'There was an error caching assets (see: main.js), perhaps due to a ' +
+                'network timeout, so we skipped caching. Reload the app to try again.'
+            );
+            console.log(e.message);
+        } finally {
+            this.setState({appIsReady: true});
+        }
+    }
 
   render() {
     if (this.state.showDownloadingModal) {
