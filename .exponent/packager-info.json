@@ -1,8 +1,8 @@
 {
-  "exponentServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
-  "exponentServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null
+  "exponentServerNgrokUrl": "https://bn-rcf.gregfielding.coffee-shop-mobile.exp.direct",
+  "packagerNgrokUrl": "https://packager.bn-rcf.gregfielding.coffee-shop-mobile.exp.direct",
+  "ngrokPid": 31124,
+  "exponentServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 31095
 }
