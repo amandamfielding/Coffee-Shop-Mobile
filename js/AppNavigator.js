@@ -89,7 +89,7 @@ class AppNavigator extends Component {
       case 'cart':
         return <Cart />;
       case 'payment':
-        return <Payment />;  
+        return <Payment />;
       default :
         return <LogIn />;
     }
