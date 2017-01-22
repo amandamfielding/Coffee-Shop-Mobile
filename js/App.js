@@ -1,7 +1,7 @@
 import Exponent from 'exponent';
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
-
+import { Font } from 'exponent';
 import { Container, Content, Text, View } from 'native-base';
 import Modal from 'react-native-modalbox';
 
@@ -32,36 +32,36 @@ class App extends Component {
     this.state = {
       showDownloadingModal: false,
       showInstalling: false,
-      appIsReady: true
+      appIsReady: true,
     };
   }
 
-  componentWillMount() {
-        this._loadAssetsAsync();
-    }
+  // componentWillMount() {
+  //       this._loadAssetsAsync();
+  //   }
 
-  async _loadAssetsAsync() {
-        try {
-            await cacheAssetsAsync({
-                // images: [
-                //     require('./assets/images/exponent-wordmark.png'),
-                // ],
-                fonts: [
-                    // FontAwesome.font,
-                    // {'Arial': require('../assets/fonts/Arial.ttf')},
-                    // {'Roboto_medium': require('../assets/fonts/Roboto_medium.ttf')},
-                ],
-            });
-        } catch(e) {
-            console.warn(
-                'There was an error caching assets (see: main.js), perhaps due to a ' +
-                'network timeout, so we skipped caching. Reload the app to try again.'
-            );
-            console.log(e.message);
-        } finally {
-            this.setState({appIsReady: true});
-        }
-    }
+  // async _loadAssetsAsync() {
+  //       try {
+  //           await cacheAssetsAsync({
+  //               // images: [
+  //               //     require('./assets/images/exponent-wordmark.png'),
+  //               // ],
+  //               // fonts: [
+  //               //     // FontAwesome.font,
+  //               //     {'Roboto': require('../assets/fonts/Roboto-Regular.ttf')},
+  //               //     {'Veneer': require('../assets/fonts/veneer-webfont.ttf')},
+  //               // ],
+  //           });
+  //       } catch(e) {
+  //           console.warn(
+  //               'There was an error caching assets (see: main.js), perhaps due to a ' +
+  //               'network timeout, so we skipped caching. Reload the app to try again.'
+  //           );
+  //           console.log(e.message);
+  //       } finally {
+  //           this.setState({appIsReady: true});
+  //       }
+  //   }
 
   render() {
     if (this.state.showDownloadingModal) {

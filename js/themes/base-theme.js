@@ -86,7 +86,6 @@ export default {
   brandWarning: '#f0ad4e',
   brandSidebar: '#252932',
 
-
   // Font
   fontFamily: (Platform.OS === 'ios') ? 'HelveticaNeue' : 'Roboto',
   fontSizeBase: 15,

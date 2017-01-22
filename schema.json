@@ -54,6 +54,7 @@
       },
       "7": {
         "title": "Latte",
+        "imageUrl": "https://firebasestorage.googleapis.com/v0/b/coffee-shop-mobile.appspot.com/o/latte.jpg?alt=media&token=faee647b-3198-4214-bc24-35d4ab86974b",
         "sizes": [
         {"10oz": {
             "price": 3.95
