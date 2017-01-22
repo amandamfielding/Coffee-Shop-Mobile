@@ -9,79 +9,76 @@ const deviceWidth = Dimensions.get('window').width;
 module.exports = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
     width: null,
     height: null,
   },
-  shadow: {
-    flex: 1,
-    width: null,
-    height: null,
-    resizeMode: 'stretch'
-  },
-  bg: {
-    flex: 2,
-    paddingTop: 10,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 30,
-    bottom: 0,
-  },
   logoImage: {
     alignSelf: "flex-end",
-    marginBottom: 20,
-    flex: 1,
     width: deviceWidth / 1.5 ,
-        height: deviceHeight / 4,
+    height: deviceHeight / 3,
     resizeMode: "contain",
   },
   input: {
-    marginBottom: 20
+    marginBottom: 15,
+    width: deviceWidth / 1.5,
   },
   inputValue: {
-    color: "white"
+    color: "white",
+    fontWeight: "600",
   },
-  btn: {
-    marginTop: 15,
-    marginBottom: 15,
-    alignSelf: 'center'
+  loginBtn: {
+    marginVertical: 15,
+    alignSelf: 'center',
+    width: deviceWidth / 2,
+    backgroundColor: "#E7B220",
+    borderRadius: 0,
+  },
+  btnText: {
+    color: "white",
+    fontFamily: 'veneer',
+    fontSize: 18,
   },
   feedback: {
     textAlign: "center",
-    color: "white"
+    color: "white",
+    backgroundColor: "transparent",
+    width: deviceWidth / 1.5,
   },
   logoContainer: {
-    flex: 3,
-    flexDirection: "row",
-    justifyContent: "flex-end"
+    flex: 6,
+    justifyContent: "flex-end",
+    marginBottom:5,
   },
   buttonContainer: {
-    flex: 1,
-    justifyContent: "center"
+    flex: 6,
+    justifyContent: "flex-start"
   },
   linkContainer: {
-    flex: 1,
+    flex: 2,
     flexDirection: "row",
     justifyContent: "center"
   },
   links: {
     color: "white",
+    fontFamily: 'veneer',
+    fontSize: 16,
   },
   FBimage: {
-    width: 50,
-    height: 50,
-    alignSelf: "center"
+    width: 36,
+    height: 36,
+    alignSelf: "center",
+    justifyContent: "flex-end",
   },
   FBbutton: {
-    width: 225,
-    height: 50,
+    width: deviceWidth / 2,
+    height: 40,
     borderColor: "#2d5073",
     backgroundColor: "#3b5998",
     marginBottom: 15,
     alignSelf: "center",
     position: "relative",
-    borderRadius: 2,
+    borderRadius: 0,
     shadowColor: "gray",
     shadowOffset: {
       width: 1,
@@ -93,43 +90,11 @@ module.exports = StyleSheet.create({
   FBtext: {
     color: "white",
     alignSelf: "center",
-    marginRight: 15,
-    marginLeft: 15,
-    fontFamily: 'veneer'
+    marginHorizontal: 12,
+    fontFamily: 'veneer',
+    fontSize: 16,
   },
   FBflex: {
-    flex: 1,
-    flexDirection: "row",
-  },
-  GPimage: {
-    width: 50,
-    height: 50,
-    alignSelf: "center"
-  },
-  GPbutton: {
-    width: 225,
-    height: 50,
-    borderColor: "#111",
-    backgroundColor: "#222",
-    marginBottom: 15,
-    alignSelf: "center",
-    position: "relative",
-    borderRadius: 2,
-    shadowColor: "gray",
-    shadowOffset: {
-      width: 1,
-      height: 1
-    },
-    shadowRadius: 2,
-    shadowOpacity: 0.5
-  },
-  GPtext: {
-    color: "white",
-    alignSelf: "center",
-    marginRight: 15,
-    marginLeft: 15
-  },
-  GPflex: {
     flex: 1,
     flexDirection: "row",
   }

@@ -1,6 +1,6 @@
-
 import React, { Component } from 'react';
 import { TouchableOpacity, ScrollView, ListView } from 'react-native';
+import { Font } from 'exponent';
 import { connect } from 'react-redux';
 import { actions } from 'react-native-navigation-redux-helpers';
 import { Container, Header, View, Title, Content, Text, Button, Icon, Card, CardItem } from 'native-base';
@@ -44,7 +44,8 @@ class Order extends Component {
       dataSource2: ds2,
       dataSource3: ds3,
       dataSource4: ds4,
-      dataSource5: ds5
+      dataSource5: ds5,
+      fontLoaded: false
     })
   }
 
@@ -94,12 +95,16 @@ class Order extends Component {
       })
       this.setState({ dataSource5: ds5.cloneWithRows(juices) })
     })
+     Font.loadAsync({
+      'veneer': require('../../../assets/fonts/veneer.ttf'),
+    });
+    this.setState({ fontLoaded: true });
   }
 
   renderRow(rowData) {
     return (
       <Card style={styles.row}>
-        <CardItem>
+        <CardItem button onPress={() => this.pushRoute("options", 1)}>
           <Text style={styles.rowTitle}>{rowData.title}</Text>
         </CardItem>
       </Card>
@@ -116,6 +121,11 @@ class Order extends Component {
   }
 
   render() {
+    if (!this.state.fontLoaded) {return null;}
+    const yourDrinks = this.state.fontLoaded ? "Your Drinks" : null;
+    const login = this.state.fontLoaded ? "Login" : null;
+    const signup = this.state.fontLoaded ? "Sign Up" : null;
+    const forgot = this.state.fontLoaded ? "Forgot Password?" : null;
     return (
       <Container theme={myTheme} style={styles.container}>
         <Header sytle={styles.header}>
@@ -130,7 +140,7 @@ class Order extends Component {
 
         <View contentContainerStyle={{flex:1}}>
           <ScrollView>
-            <Text style={styles.menuCategory}>Your Drinks</Text>
+            <Text style={styles.menuCategory}>{yourDrinks}</Text>
           <Text style={styles.menuCategory}>Local Favorites</Text>
             <ListView
               scrollEnabled={false}
