@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Image } from 'react-native';
 import { connect } from 'react-redux';
 import { actions } from 'react-native-navigation-redux-helpers';
-import { Container, Text, Content, InputGroup, Input, Button, Icon, View } from 'native-base';
+import { Container, Header, Title, Text, Content, InputGroup, Input, Button, Icon, View } from 'native-base';
 import * as firebase from "firebase";
 import { firebaseApp } from "../authentication";
 

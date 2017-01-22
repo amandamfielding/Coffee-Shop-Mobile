@@ -7,7 +7,7 @@ const deviceHeight = Dimensions.get('window').height;
 
 module.exports = StyleSheet.create({
   container: {
-    backgroundColor: '#FBFAFA',
+    backgroundColor: '#0b0909',
     flex: 1,
   },
   body: {
@@ -21,15 +21,17 @@ module.exports = StyleSheet.create({
     color: "white",
   },
   row: {
-    backgroundColor: "black",
+    backgroundColor: "#0b0909",
     borderColor: "grey",
     borderRadius: 5,
   },
   menuCategory: {
-    color: "black",
-    backgroundColor: "gold",
-    margin: 2,
-    padding: 8
+    color: "white",
+    backgroundColor: "#E7B220",
+    margin: 0,
+    padding: 8,
+    fontFamily: 'veneer',
+    fontSize: 18,
   },
   links: {
     textAlign: "center",

@@ -3,6 +3,7 @@ import { Image, Alert } from 'react-native';
 import { Font } from 'exponent';
 import { connect } from 'react-redux';
 import { actions } from 'react-native-navigation-redux-helpers';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { Container, Text, Content, InputGroup, Input, Button, Icon, View } from 'native-base';
 import * as firebase from "firebase";
 import { firebaseApp } from "../authentication";
@@ -87,41 +88,34 @@ class Login extends Component {
 
   render() {
     if (!this.state.fontLoaded) {return null;}
+    const fb = this.state.fontLoaded ? "Sign in with Facebook" : null;
+    const login = this.state.fontLoaded ? "Login" : null;
+    const signup = this.state.fontLoaded ? "Sign Up" : null;
+    const forgot = this.state.fontLoaded ? "Forgot Password?" : null;
     return (
       <Image source={require('../../../../images/beans2.jpg')} style={styles.container}>
-          <Content>
               <View style={styles.logoContainer}>
               <Image
                 style={styles.logoImage}
                 source={{uri:'https://firebasestorage.googleapis.com/v0/b/coffee-shop-mobile.appspot.com/o/logofritzwhite.png?alt=media&token=1c9f80e9-53ca-42cd-82b9-e6ca72c25d6f'}} />
               </View>
               <View style={styles.buttonContainer}>
-                <Button style={styles.GPbutton}>
-                  <View style={styles.GPflex}>
-                    <Text style={styles.GPtext}>Sign in with Google</Text>
-                    <Image style={styles.GPimage} source={{uri:"http://www.iconsdb.com/icons/preview/white/google-plus-xxl.png"}} />
-                  </View>
-                </Button>
                   <Button onPress={() => {this.FBlogIn()}} style={styles.FBbutton}>
                     <View style={styles.FBflex}>
-                    
-                      <Text style={styles.FBtext}>this.state.fontLoaded ? (
-                        Sign in with Facebook
-                        ) : null
-                    </Text>
-                      <Image style={styles.FBimage} source={{uri:"http://icons.iconarchive.com/icons/danleech/simple/512/facebook-icon.png"}} />
+                      <Text style={styles.FBtext}>{fb}</Text>
+                      <FontAwesome name="facebook-f" size={24} color="#ffffff" />
                     </View>
                 </Button>
                 <Text style={styles.feedback}>{this.state.result}</Text>
                 <InputGroup style={styles.input}>
-                  <Icon name="ios-person" />
+                  <Icon name="ios-person" style={{ color:"white" }} />
                   <Input
                     style={styles.inputValue}
                     placeholder="EMAIL"
                     onChangeText={(text) => {this.setState({ email: text })}} />
                 </InputGroup>
                 <InputGroup style={styles.input}>
-                  <Icon name="ios-unlock-outline" />
+                  <Icon name="ios-unlock-outline" style={{ color:"white" }}/>
                   <Input
                     style={styles.inputValue}
                     placeholder="PASSWORD"
@@ -129,21 +123,20 @@ class Login extends Component {
                     onChangeText={(text) => {this.setState({ password: text })}}
                   />
                 </InputGroup>
-                <Button style={styles.btn} onPress={() => {this.logIn()}}>
-                  <Text>Login</Text>
+                <Button style={styles.loginBtn} onPress={() => {this.logIn()}}>
+                  <Text style={styles.btnText}>{login}</Text>
                 </Button>
                 </View>
                 <View style={styles.linkContainer}>
                   <Button transparent
                     onPress={() => {this.replaceRoute('signUp');}}>
-                    <Text style={styles.links}>Sign Up</Text>
+                    <Text style={styles.links}>{signup}</Text>
                   </Button>
                   <Button transparent
                     onPress={() => {this.replaceRoute('forgotPassword');}}>
-                    <Text style={styles.links}>Forgot Password?</Text>
+                    <Text style={styles.links}>{forgot}</Text>
                   </Button>
                 </View>
-          </Content>
       </Image>
     );
   }

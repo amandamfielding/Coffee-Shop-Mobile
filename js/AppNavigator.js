@@ -11,6 +11,7 @@ import LogIn from './components/auth/logIn/';
 import SignUp from './components/auth/signUp/';
 import ForgotPassword from './components/auth/forgotPassword';
 import Order from './components/order/';
+import Options from './components/options/';
 import Cart from './components/cart/';
 import Locations from './components/locations/';
 import Payment from './components/payment';
@@ -89,7 +90,9 @@ class AppNavigator extends Component {
       case 'cart':
         return <Cart />;
       case 'payment':
-        return <Payment />;  
+        return <Payment />;
+      case 'options':
+        return <Options />;  
       default :
         return <LogIn />;
     }
