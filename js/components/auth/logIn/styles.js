@@ -8,17 +8,17 @@ const deviceWidth = Dimensions.get('window').width;
 
 module.exports = StyleSheet.create({
   container: {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: '#FBFAFA',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: null,
+    height: null,
   },
   shadow: {
     flex: 1,
     width: null,
     height: null,
+    resizeMode: 'stretch'
   },
   bg: {
     flex: 2,
@@ -29,12 +29,12 @@ module.exports = StyleSheet.create({
     bottom: 0,
   },
   logoImage: {
-    alignSelf: "center",
-    marginBottom: 40,
+    alignSelf: "flex-end",
+    marginBottom: 20,
     flex: 1,
-    width: deviceWidth / 2 ,
-    height: deviceHeight / 3,
-    resizeMode: "contain"
+    width: deviceWidth / 1.5 ,
+        height: deviceHeight / 4,
+    resizeMode: "contain",
   },
   input: {
     marginBottom: 20
@@ -45,11 +45,20 @@ module.exports = StyleSheet.create({
   btn: {
     marginTop: 15,
     marginBottom: 15,
-    alignSelf: 'center',
+    alignSelf: 'center'
   },
   feedback: {
     textAlign: "center",
     color: "white"
+  },
+  logoContainer: {
+    flex: 3,
+    flexDirection: "row",
+    justifyContent: "flex-end"
+  },
+  buttonContainer: {
+    flex: 1,
+    justifyContent: "center"
   },
   linkContainer: {
     flex: 1,
@@ -85,7 +94,8 @@ module.exports = StyleSheet.create({
     color: "white",
     alignSelf: "center",
     marginRight: 15,
-    marginLeft: 15
+    marginLeft: 15,
+    fontFamily: 'veneer'
   },
   FBflex: {
     flex: 1,

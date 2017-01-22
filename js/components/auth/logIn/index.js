@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Image, Alert } from 'react-native';
+import { Font } from 'exponent';
 import { connect } from 'react-redux';
 import { actions } from 'react-native-navigation-redux-helpers';
 import { Container, Text, Content, InputGroup, Input, Button, Icon, View } from 'native-base';
@@ -25,6 +26,13 @@ class Login extends Component {
     }),
   }
 
+  async componentDidMount() {
+    await Font.loadAsync({
+      'veneer': require('../../../../assets/fonts/veneer.ttf'),
+    });
+    this.setState({ fontLoaded: true });
+  }
+
   replaceRoute(route) {
     this.props.replaceAt('logIn', { key: route, index: 0 }, this.props.navigation.key);
   }
@@ -35,7 +43,8 @@ class Login extends Component {
       email: "",
       password: "",
       result: "",
-      FBloggedIn: false
+      FBloggedIn: false,
+      fontLoaded: false
     });
   }
 
@@ -77,17 +86,16 @@ class Login extends Component {
 
 
   render() {
+    if (!this.state.fontLoaded) {return null;}
     return (
-      <Container>
-        <View style={styles.container}>
+      <Image source={require('../../../../images/beans2.jpg')} style={styles.container}>
           <Content>
-            <Image source={background} style={styles.shadow}>
-              <View style={styles.bg}>
-
+              <View style={styles.logoContainer}>
               <Image
                 style={styles.logoImage}
                 source={{uri:'https://firebasestorage.googleapis.com/v0/b/coffee-shop-mobile.appspot.com/o/logofritzwhite.png?alt=media&token=1c9f80e9-53ca-42cd-82b9-e6ca72c25d6f'}} />
-
+              </View>
+              <View style={styles.buttonContainer}>
                 <Button style={styles.GPbutton}>
                   <View style={styles.GPflex}>
                     <Text style={styles.GPtext}>Sign in with Google</Text>
@@ -96,7 +104,11 @@ class Login extends Component {
                 </Button>
                   <Button onPress={() => {this.FBlogIn()}} style={styles.FBbutton}>
                     <View style={styles.FBflex}>
-                      <Text style={styles.FBtext}>Sign in with Facebook</Text>
+                    
+                      <Text style={styles.FBtext}>this.state.fontLoaded ? (
+                        Sign in with Facebook
+                        ) : null
+                    </Text>
                       <Image style={styles.FBimage} source={{uri:"http://icons.iconarchive.com/icons/danleech/simple/512/facebook-icon.png"}} />
                     </View>
                 </Button>
@@ -120,6 +132,7 @@ class Login extends Component {
                 <Button style={styles.btn} onPress={() => {this.logIn()}}>
                   <Text>Login</Text>
                 </Button>
+                </View>
                 <View style={styles.linkContainer}>
                   <Button transparent
                     onPress={() => {this.replaceRoute('signUp');}}>
@@ -130,12 +143,8 @@ class Login extends Component {
                     <Text style={styles.links}>Forgot Password?</Text>
                   </Button>
                 </View>
-
-              </View>
-            </Image>
           </Content>
-        </View>
-      </Container>
+      </Image>
     );
   }
 }
