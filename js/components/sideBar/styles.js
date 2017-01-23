@@ -20,5 +20,12 @@ module.exports = StyleSheet.create({
   },
   itemText: {
   color:"#fff",
+  },
+  profilePic: {
+    backgroundColor: "white",
+    width: 200,
+    height: 200,
+    resizeMode: "contain",
+    alignSelf: "center"
   }
 });

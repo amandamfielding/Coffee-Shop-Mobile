@@ -63,7 +63,7 @@ class Home extends Component {
           renderTabBar={() => <CustomTabBar open={this.open.bind(this)}/>}
           >
           <News tabLabel="md-flame" />
-          <Cart tabLabel="md-chatboxes" />
+          <Cart tabLabel="md-cart" />
         </Tabs>
       );
     }

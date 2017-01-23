@@ -28,7 +28,7 @@ class News extends Component {
     return (
       <Container style={styles.wrapper}>
         <Content>
-          <Text>testing</Text>
+          <Text>news</Text>
         </Content>
       </Container>
 

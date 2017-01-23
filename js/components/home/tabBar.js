@@ -22,13 +22,13 @@ const TabBar = React.createClass({
       {this.props.tabs.map((tab, i) => {
         return <TouchableOpacity key={tab} onPress={() => this.props.goToPage(i)} style={styles.tab}>
         <View style={[(tab === 'md-flame' && (this.props.activeTab === 1)) ? {} : styles.iconBtn,{backgroundColor: (tab === 'md-flame' && (this.props.activeTab === 1) ) ? 'transparent' : (this.props.activeTab === i ? '#E7B220' : 'lightgrey')}]}>
-          {( (tab === 'md-chatboxes'))  ?
+          {( (tab === 'md-cart'))  ?
           <Icon
             name={tab}
             size={20}
             color={'#FFF'}
             ref={(icon) => { this.tabIcons[i] = icon; }}
-            style={{marginTop: (tab === 'md-chatboxes') ? 4 : undefined}}
+            style={{marginTop: (tab === 'md-cart') ? 4 : undefined}}
           />
           :
           <FontAwesome name="coffee" />

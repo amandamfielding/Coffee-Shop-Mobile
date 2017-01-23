@@ -130,7 +130,7 @@ class Order extends Component {
     return (
       <Container theme={myTheme} style={styles.container}>
         <Header style={styles.header}>
-          <Button transparent onPress={() => this.popRoute()}>
+          <Button transparent onPress={() => this.goBack()}>
             <Icon name='ios-arrow-back' style={{color:"#fff"}} />
           </Button>
           <Title style={styles.headerText}>Place an Order</Title>
