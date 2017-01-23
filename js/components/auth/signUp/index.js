@@ -9,7 +9,8 @@ import { firebaseApp } from "../authentication";
 import styles from './styles';
 
 const {
-  replaceAt
+  popRoute,
+  pushRoute
 } = actions;
 
 const background = require('../../../../images/beans2.jpg');
@@ -37,14 +38,17 @@ class SignUp extends Component {
   componentDidMount() {
     firebaseApp.auth().onAuthStateChanged(user => {
       if (user) {
-        this.replaceRoute('order');
+        this.pushToRoute('order');
       }
     });
   }
 
-  replaceRoute(route) {
-    // this.setUser(this.state.name);
-    this.props.replaceAt('signUp', { key: route }, this.props.navigation.key);
+  pushToRoute(route) {
+    this.props.pushRoute({ key: route, index: 1 }, this.props.navigation.key);
+  }
+
+  goBack() {
+    this.props.popRoute(this.props.navigation.key);
   }
 
   signUp() {
@@ -59,8 +63,13 @@ class SignUp extends Component {
 
   render() {
     return (
-      <Container>
-        <View style={styles.container}>
+      <Container style={styles.container}>
+        <Header>
+          <Button transparent onPress={this.goBack.bind(this)}>
+            <Icon name="ios-arrow-back" style={{ fontSize: 30, lineHeight: 32 }} />
+          </Button>
+          <Title>Sign Up</Title>
+        </Header>
           <Content>
             <Image source={background} style={styles.shadow}>
               <View style={styles.bg}>
@@ -102,7 +111,6 @@ class SignUp extends Component {
               </View>
             </Image>
           </Content>
-        </View>
       </Container>
     );
   }
@@ -110,7 +118,8 @@ class SignUp extends Component {
 
 function bindActions(dispatch) {
   return {
-    replaceAt: (routeKey, route, key) => dispatch(replaceAt(routeKey, route, key)),
+    popRoute: key => dispatch(popRoute(key)),
+    pushRoute: (route, key) => dispatch(pushRoute(route, key)),
     // setUser: name => dispatch(setUser(name)),
   };
 }

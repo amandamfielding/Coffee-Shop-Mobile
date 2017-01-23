@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { TouchableOpacity } from "react-native";
-import { Container, Content, View, Text, Input, InputGroup, Icon } from "native-base";
+import { Container, Header, Title, Button, Content, View, Text, Input, InputGroup, Icon } from "native-base";
 import { actions } from 'react-native-navigation-redux-helpers';
 import styles from "./styles";
 import { firebaseApp } from "../authentication";
 
 const {
-  replaceAt
+  popRoute
 } = actions;
 
 class ForgotPassword extends React.Component {
@@ -40,13 +40,19 @@ class ForgotPassword extends React.Component {
       });
   }
 
-  replaceRoute(route) {
-    this.props.replaceAt('forgotPassword', { key: route, index: 0 }, this.props.navigation.key);
+  goBack () {
+    this.props.popRoute(this.props.navigation.key);
   }
 
   render() {
     return (
       <Container style={styles.container}>
+        <Header>
+          <Button transparent onPress={this.goBack.bind(this)}>
+            <Icon name="ios-arrow-back" style={{ fontSize: 30, lineHeight: 32 }} />
+          </Button>
+          <Title>Reset Password</Title>
+        </Header>
         <Content>
           <View style={styles.bg}>
             <Text style={styles.feedback}>{this.state.result}</Text>
@@ -58,11 +64,6 @@ class ForgotPassword extends React.Component {
                 onChangeText={(text) => {this.setState({ email: text })}} />
             </InputGroup>
             <View style={styles.links}>
-              <TouchableOpacity
-                onPress={() => this.replaceRoute('login')}
-              >
-                <Text style={styles.link}>Back</Text>
-              </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => this.changePassword()}
               >
@@ -78,7 +79,7 @@ class ForgotPassword extends React.Component {
 
 function bindActions(dispatch) {
   return {
-    replaceAt: (routeKey, route, key) => dispatch(replaceAt(routeKey, route, key)),
+    popRoute: key => dispatch(popRoute(key)),
   };
 }
 

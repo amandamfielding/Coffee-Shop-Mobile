@@ -35,7 +35,7 @@ module.exports = StyleSheet.create({
   },
   links: {
     textAlign: "center",
-    color: "black"
+    color: "#0b0909"
   },
   header: {
     backgroundColor: "gray",
