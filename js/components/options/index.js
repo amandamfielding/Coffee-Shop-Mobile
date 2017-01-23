@@ -27,11 +27,11 @@ class Options extends Component {
 			<Container style={styles.container}>
 			<Header style={styles.header}>
           <Button transparent onPress={() => this.popRoute()}>
-            <Icon name='ios-arrow-back' />
+            <Icon name='ios-arrow-back' style={{color:"#fff"}} />
           </Button>
           <Title style={styles.headerText}>Drink Title</Title>
           <Button transparent onPress={this.props.openDrawer}>
-              <Icon name='ios-menu' />
+              <Icon name='ios-menu' style={{color:"#fff"}} />
           </Button>
       </Header>
       <Content>

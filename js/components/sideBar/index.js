@@ -43,19 +43,19 @@ class SideBar extends Component {
 
   render() {
     return (
-      <Content theme={myTheme} style={styles.sidebar} >
-        <List>
-          <ListItem button onPress={() => this.navigateTo('order')} >
-            <Text>Order</Text>
+      <Content style={styles.sidebar} >
+        <List style={styles.list}>
+          <ListItem style={styles.listItem} button onPress={() => this.navigateTo('order')} >
+            <Text style={styles.itemText} >Order</Text>
           </ListItem>
-          <ListItem button onPress={() => this.navigateTo('locations')} >
-            <Text>Locations</Text>
+          <ListItem style={styles.listItem} button onPress={() => this.navigateTo('locations')} >
+            <Text style={styles.itemText}>Locations</Text>
           </ListItem>
-          <ListItem button onPress={() => this.navigateTo('cart')} >
-            <Text>Cart</Text>
+          <ListItem style={styles.listItem} button onPress={() => this.navigateTo('cart')} >
+            <Text style={styles.itemText}>Cart</Text>
           </ListItem>
-          <ListItem button onPress={() => this.signOut()} >
-            <Text>Sign Out</Text>
+          <ListItem style={styles.listItem} button onPress={() => this.signOut()} >
+            <Text style={styles.itemText}>Sign Out</Text>
           </ListItem>
         </List>
       </Content>
