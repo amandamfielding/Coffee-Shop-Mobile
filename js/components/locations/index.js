@@ -12,8 +12,7 @@ import { setIndex } from '../../actions/list';
 import myTheme from '../../themes/base-theme';
 
 const {
-  reset,
-  pushRoute,
+  popRoute
 } = actions;
 
 
@@ -89,7 +88,7 @@ class Locations extends Component {
   //   // this.setState({ currentRegion })
   // }
 
-  popRoute() {
+  goBack () {
     this.props.popRoute(this.props.navigation.key);
   }
 
@@ -108,7 +107,7 @@ class Locations extends Component {
     return (
       <View style={styles.container}>
         <Header sytle={styles.header}>
-          <Button transparent onPress={() => this.popRoute()}>
+          <Button transparent onPress={() => this.goBack()}>
             <Icon name='ios-arrow-back' />
           </Button>
           <Title>Locations</Title>
@@ -157,8 +156,8 @@ function bindAction(dispatch) {
   return {
     setIndex: index => dispatch(setIndex(index)),
     openDrawer: () => dispatch(openDrawer()),
-    pushRoute: (route, key) => dispatch(pushRoute(route, key)),
     reset: key => dispatch(reset([{ key: 'login' }], key, 0)),
+    popRoute: key => dispatch(popRoute(key)),
   };
 }
 

@@ -92,7 +92,7 @@ class AppNavigator extends Component {
       case 'payment':
         return <Payment />;
       case 'options':
-        return <Options />;  
+        return <Options />;
       default :
         return <LogIn />;
     }

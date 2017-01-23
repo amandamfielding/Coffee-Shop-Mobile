@@ -21,6 +21,7 @@ const ds5 = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
 const {
   reset,
   pushRoute,
+  popRoute
 } = actions;
 
 class Order extends Component {
@@ -116,7 +117,7 @@ class Order extends Component {
     this.props.pushRoute({ key: route, index: 1 }, this.props.navigation.key);
   }
 
-  popRoute() {
+  goBack () {
     this.props.popRoute(this.props.navigation.key);
   }
 
@@ -129,7 +130,7 @@ class Order extends Component {
     return (
       <Container theme={myTheme} style={styles.container}>
         <Header sytle={styles.header}>
-          <Button transparent onPress={() => this.popRoute()}>
+          <Button transparent onPress={() => this.goBack()}>
             <Icon name='ios-arrow-back' />
           </Button>
           <Title>Place an Order</Title>
@@ -196,6 +197,7 @@ function bindAction(dispatch) {
     openDrawer: () => dispatch(openDrawer()),
     pushRoute: (route, key) => dispatch(pushRoute(route, key)),
     reset: key => dispatch(reset([{ key: 'login' }], key, 0)),
+    popRoute: key => dispatch(popRoute(key)),
   };
 }
 
