@@ -15,6 +15,7 @@ import Options from './components/options/';
 import Cart from './components/cart/';
 import Locations from './components/locations/';
 import Payment from './components/payment';
+import Home from './components/home';
 
 const {
   popRoute,
@@ -22,6 +23,7 @@ const {
 
 const {
   CardStack: NavigationCardStack,
+  // StateUtils: NavigationStateUtils,
 } = NavigationExperimental;
 
 
@@ -75,6 +77,8 @@ class AppNavigator extends Component {
 
   _renderScene(props) {
     switch (props.scene.route.key) {
+      case 'home':
+        return <Home />
       case 'splashscreen':
         return <SplashPage />;
       case 'logIn':

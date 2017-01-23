@@ -43,7 +43,7 @@ class Payment extends Component {
     this.setState(newState);
   }
 
-  popRoute() {
+  goBack() {
     this.props.popRoute(this.props.navigation.key);
   }
 
@@ -66,7 +66,7 @@ class Payment extends Component {
     return (
       <Container theme={theme} style={{ backgroundColor: theme.defaultBackgroundColor }}>
         <Header style={{ justifyContent: 'flex-start', paddingTop: (Platform.OS === 'ios') ? 23 : 9 }}>
-          <Button transparent onPress={() => this.popRoute()} >
+          <Button transparent onPress={() => this.goBack()} >
             <Icon name="ios-arrow-round-back-outline" style={{ fontSize: 30, lineHeight: 32, paddingRight: 10 }} />
             Payment
           </Button>

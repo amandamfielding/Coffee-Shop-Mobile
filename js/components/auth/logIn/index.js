@@ -23,6 +23,7 @@ class Login extends Component {
 
   static propTypes = {
     replaceAt: React.PropTypes.func,
+    pushRoute: React.PropTypes.func,
     navigation: React.PropTypes.shape({
       key: React.PropTypes.string,
     }),
@@ -71,13 +72,13 @@ class Login extends Component {
   }
 
   replaceRoute(route) {
-    this.props.replaceAt('login', { key: route }, this.props.navigation.key);
+    this.props.replaceAt('logIn', { key: route }, this.props.navigation.key);
   }
 
-  componentWillUpdate() {
+  componentDidUpdate() {
     firebaseApp.auth().onAuthStateChanged(user => {
       if (user) {
-        this.replaceRoute('order');
+        this.replaceRoute('home');
       }
     });
   }
@@ -151,7 +152,7 @@ function bindActions(dispatch) {
   return {
     replaceAt: (routeKey, route, key) => dispatch(replaceAt(routeKey, route, key)),
     pushRoute: (route, key) => dispatch(pushRoute(route, key)),
-    
+
   };
 }
 

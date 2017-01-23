@@ -38,7 +38,7 @@ class SignUp extends Component {
   componentDidMount() {
     firebaseApp.auth().onAuthStateChanged(user => {
       if (user) {
-        this.pushToRoute('order');
+        this.pushToRoute('home');
       }
     });
   }
