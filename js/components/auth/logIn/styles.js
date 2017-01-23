@@ -30,7 +30,7 @@ module.exports = StyleSheet.create({
   loginBtn: {
     marginVertical: 15,
     alignSelf: 'center',
-    width: deviceWidth / 2,
+    width: deviceWidth / 1.5,
     backgroundColor: "#E7B220",
     borderRadius: 0,
   },
@@ -71,7 +71,7 @@ module.exports = StyleSheet.create({
     justifyContent: "flex-end",
   },
   FBbutton: {
-    width: deviceWidth / 2,
+    width: deviceWidth / 1.5,
     height: 40,
     borderColor: "#2d5073",
     backgroundColor: "#3b5998",

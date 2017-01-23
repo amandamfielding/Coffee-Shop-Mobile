@@ -129,13 +129,13 @@ class Order extends Component {
     const forgot = this.state.fontLoaded ? "Forgot Password?" : null;
     return (
       <Container theme={myTheme} style={styles.container}>
-        <Header sytle={styles.header}>
-          <Button transparent onPress={() => this.goBack()}>
-            <Icon name='ios-arrow-back' />
+        <Header style={styles.header}>
+          <Button transparent onPress={() => this.popRoute()}>
+            <Icon name='ios-arrow-back' style={{color:"#fff"}} />
           </Button>
-          <Title>Place an Order</Title>
+          <Title style={styles.headerText}>Place an Order</Title>
           <Button transparent onPress={this.props.openDrawer}>
-              <Icon name='ios-menu' />
+              <Icon name='ios-menu' style={{color:"#fff"}} />
           </Button>
         </Header>
 
