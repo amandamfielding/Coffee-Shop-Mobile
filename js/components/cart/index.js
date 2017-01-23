@@ -49,15 +49,6 @@ class Cart extends Component {
   render() {
     return (
       <Container style={styles.flexContainer}>
-        <Header sytle={styles.header}>
-          <Button transparent onPress={() => this.goBack()}>
-            <Icon name='ios-arrow-back' />
-          </Button>
-          <Title>Cart</Title>
-          <Button transparent onPress={this.props.openDrawer}>
-              <Icon name='ios-menu' />
-          </Button>
-        </Header>
         <Content padder style={{ backgroundColor: 'transparent' }}>
           <Text style={styles.points}>{this.state.points} points</Text>
           <Card foregroundColor="#000" style={styles.card} >

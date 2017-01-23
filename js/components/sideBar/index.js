@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Image} from 'react-native';
 import { Content, Text, List, ListItem } from 'native-base';
 import { firebaseApp } from "../auth/authentication"
 
@@ -28,7 +29,17 @@ class SideBar extends Component {
   }
 
   navigateTo(route) {
-    this.props.navigateTo(route, 'order');
+    this.props.navigateTo(route, 'home');
+  }
+
+  goToOrder() {
+    this.props.pushRoute({ key: 'order', index: 1 }, this.props.navigation.key);
+    this.props.closeDrawer();
+  }
+
+  goToLocations() {
+    this.props.pushRoute({ key: 'locations', index: 1 }, this.props.navigation.key);
+    this.props.closeDrawer();
   }
 
   signOut() {
@@ -42,17 +53,23 @@ class SideBar extends Component {
   }
 
   render() {
+
+    const user = firebaseApp.auth().currentUser;
+    let pic;
+    if (user != null) {
+      pic = user.photoURL
+    }
+    let profilePic = (user && pic) ? (<Image style={styles.profilePic} source={{uri: firebaseApp.auth().currentUser.photoURL}}/>) : (<Image style={styles.profilePic} source={require('../../../images/profilePicDefault.png')}/>)
+
     return (
       <Content style={styles.sidebar} >
+        {profilePic}
         <List style={styles.list}>
-          <ListItem style={styles.listItem} button onPress={() => this.navigateTo('order')} >
-            <Text style={styles.itemText} >Order</Text>
+          <ListItem style={styles.listItem} button onPress={this.goToOrder.bind(this)} >
+            <Text style={styles.itemText} >Place An Order</Text>
           </ListItem>
-          <ListItem style={styles.listItem} button onPress={() => this.navigateTo('locations')} >
+          <ListItem style={styles.listItem} button onPress={this.goToLocations.bind(this)} >
             <Text style={styles.itemText}>Locations</Text>
-          </ListItem>
-          <ListItem style={styles.listItem} button onPress={() => this.navigateTo('cart')} >
-            <Text style={styles.itemText}>Cart</Text>
           </ListItem>
           <ListItem style={styles.listItem} button onPress={() => this.signOut()} >
             <Text style={styles.itemText}>Sign Out</Text>
@@ -67,8 +84,9 @@ function bindAction(dispatch) {
   return {
     setIndex: index => dispatch(setIndex(index)),
     navigateTo: (route, homeRoute) => dispatch(navigateTo(route, homeRoute)),
-    reset: key => dispatch(reset([{ key: 'login' }], key, 0)),
+    reset: key => dispatch(reset([{ key: 'logIn' }], key, 0)),
     closeDrawer: () => dispatch(closeDrawer()),
+    pushRoute: (route, key) => dispatch(pushRoute(route, key))
   };
 }
 

@@ -1,8 +1,8 @@
 {
-  "exponentServerNgrokUrl": "https://9w-xjb.amandamfielding.coffeeshopmobile2.exp.direct",
-  "packagerNgrokUrl": "https://packager.9w-xjb.amandamfielding.coffeeshopmobile2.exp.direct",
-  "ngrokPid": 26705,
-  "exponentServerPort": 19003,
+  "exponentServerNgrokUrl": "https://cs-srd.amandamfielding.coffeeshopmobile2.exp.direct",
+  "packagerNgrokUrl": "https://packager.cs-srd.amandamfielding.coffeeshopmobile2.exp.direct",
+  "ngrokPid": 28479,
+  "exponentServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 26677
+  "packagerPid": 28464
 }
