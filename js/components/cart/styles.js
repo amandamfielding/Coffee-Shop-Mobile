@@ -5,7 +5,7 @@ const { StyleSheet, Dimensions, Platform } = React;
 
 module.exports = StyleSheet.create({
   container: {
-    backgroundColor: "black",
+    backgroundColor: "#0b0909",
     flex: 1,
     justifyContent: "center"
   },

@@ -5,7 +5,7 @@ const { StyleSheet, Dimensions } = React;
 
 module.exports = StyleSheet.create({
 container: {
-    backgroundColor: "black",
+    backgroundColor: "#0b0909",
     flex: 1,
     justifyContent: "center"
   },
@@ -24,7 +24,7 @@ container: {
   },
   location: {
     backgroundColor: "white",
-    borderColor: "black",
+    borderColor: "#0b0909",
     borderRadius: 5,
     margin: 2,
     padding: 10

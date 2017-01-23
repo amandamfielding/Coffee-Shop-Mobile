@@ -28,7 +28,7 @@ class SideBar extends Component {
   }
 
   navigateTo(route) {
-    this.props.navigateTo(route, 'home');
+    this.props.navigateTo(route, 'order');
   }
 
   signOut() {

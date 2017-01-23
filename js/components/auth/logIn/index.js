@@ -13,7 +13,8 @@ import Exponent from 'exponent';
 import styles from './styles';
 
 const {
-  replaceAt
+  replaceAt,
+  pushRoute
 } = actions;
 
 const background = require('../../../../images/beans2.jpg');
@@ -32,10 +33,6 @@ class Login extends Component {
       'veneer': require('../../../../assets/fonts/veneer.ttf'),
     });
     this.setState({ fontLoaded: true });
-  }
-
-  replaceRoute(route) {
-    this.props.replaceAt('logIn', { key: route, index: 0 }, this.props.navigation.key);
   }
 
   constructor(props) {
@@ -69,6 +66,14 @@ class Login extends Component {
     }
   }
 
+  pushToRoute(route) {
+    this.props.pushRoute({ key: route, index: 1 }, this.props.navigation.key);
+  }
+
+  replaceRoute(route) {
+    this.props.replaceAt('login', { key: route }, this.props.navigation.key);
+  }
+
   componentWillUpdate() {
     firebaseApp.auth().onAuthStateChanged(user => {
       if (user) {
@@ -94,49 +99,49 @@ class Login extends Component {
     const forgot = this.state.fontLoaded ? "Forgot Password?" : null;
     return (
       <Image source={require('../../../../images/beans2.jpg')} style={styles.container}>
-              <View style={styles.logoContainer}>
-              <Image
-                style={styles.logoImage}
-                source={{uri:'https://firebasestorage.googleapis.com/v0/b/coffee-shop-mobile.appspot.com/o/logofritzwhite.png?alt=media&token=1c9f80e9-53ca-42cd-82b9-e6ca72c25d6f'}} />
+        <View style={styles.logoContainer}>
+        <Image
+          style={styles.logoImage}
+          source={{uri:'https://firebasestorage.googleapis.com/v0/b/coffee-shop-mobile.appspot.com/o/logofritzwhite.png?alt=media&token=1c9f80e9-53ca-42cd-82b9-e6ca72c25d6f'}} />
+        </View>
+        <View style={styles.buttonContainer}>
+            <Button onPress={() => {this.FBlogIn()}} style={styles.FBbutton}>
+              <View style={styles.FBflex}>
+                <Text style={styles.FBtext}>{fb}</Text>
+                <FontAwesome name="facebook-f" size={24} color="#ffffff" />
               </View>
-              <View style={styles.buttonContainer}>
-                  <Button onPress={() => {this.FBlogIn()}} style={styles.FBbutton}>
-                    <View style={styles.FBflex}>
-                      <Text style={styles.FBtext}>{fb}</Text>
-                      <FontAwesome name="facebook-f" size={24} color="#ffffff" />
-                    </View>
-                </Button>
-                <Text style={styles.feedback}>{this.state.result}</Text>
-                <InputGroup style={styles.input}>
-                  <Icon name="ios-person" style={{ color:"white" }} />
-                  <Input
-                    style={styles.inputValue}
-                    placeholder="EMAIL"
-                    onChangeText={(text) => {this.setState({ email: text })}} />
-                </InputGroup>
-                <InputGroup style={styles.input}>
-                  <Icon name="ios-unlock-outline" style={{ color:"white" }}/>
-                  <Input
-                    style={styles.inputValue}
-                    placeholder="PASSWORD"
-                    secureTextEntry
-                    onChangeText={(text) => {this.setState({ password: text })}}
-                  />
-                </InputGroup>
-                <Button style={styles.loginBtn} onPress={() => {this.logIn()}}>
-                  <Text style={styles.btnText}>{login}</Text>
-                </Button>
-                </View>
-                <View style={styles.linkContainer}>
-                  <Button transparent
-                    onPress={() => {this.replaceRoute('signUp');}}>
-                    <Text style={styles.links}>{signup}</Text>
-                  </Button>
-                  <Button transparent
-                    onPress={() => {this.replaceRoute('forgotPassword');}}>
-                    <Text style={styles.links}>{forgot}</Text>
-                  </Button>
-                </View>
+          </Button>
+          <Text style={styles.feedback}>{this.state.result}</Text>
+          <InputGroup style={styles.input}>
+            <Icon name="ios-person" style={{ color:"white" }} />
+            <Input
+              style={styles.inputValue}
+              placeholder="EMAIL"
+              onChangeText={(text) => {this.setState({ email: text })}} />
+          </InputGroup>
+          <InputGroup style={styles.input}>
+            <Icon name="ios-unlock-outline" style={{ color:"white" }}/>
+            <Input
+              style={styles.inputValue}
+              placeholder="PASSWORD"
+              secureTextEntry
+              onChangeText={(text) => {this.setState({ password: text })}}
+            />
+          </InputGroup>
+          <Button style={styles.loginBtn} onPress={() => {this.logIn()}}>
+            <Text style={styles.btnText}>{login}</Text>
+          </Button>
+          </View>
+          <View style={styles.linkContainer}>
+            <Button transparent
+              onPress={() => {this.pushToRoute('signUp');}}>
+              <Text style={styles.links}>{signup}</Text>
+            </Button>
+            <Button transparent
+              onPress={() => {this.pushToRoute('forgotPassword');}}>
+              <Text style={styles.links}>{forgot}</Text>
+            </Button>
+          </View>
       </Image>
     );
   }
@@ -145,6 +150,8 @@ class Login extends Component {
 function bindActions(dispatch) {
   return {
     replaceAt: (routeKey, route, key) => dispatch(replaceAt(routeKey, route, key)),
+    pushRoute: (route, key) => dispatch(pushRoute(route, key)),
+    
   };
 }
 

@@ -38,7 +38,7 @@ class Cart extends Component {
     });
   }
 
-  popRoute() {
+  goBack() {
     this.props.popRoute(this.props.navigation.key);
   }
 
@@ -50,7 +50,7 @@ class Cart extends Component {
     return (
       <Container style={styles.flexContainer}>
         <Header sytle={styles.header}>
-          <Button transparent onPress={() => this.popRoute()}>
+          <Button transparent onPress={() => this.goBack()}>
             <Icon name='ios-arrow-back' />
           </Button>
           <Title>Cart</Title>
