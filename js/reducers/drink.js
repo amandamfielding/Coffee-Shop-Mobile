@@ -1,20 +1,21 @@
 
 import type { Action } from '../actions/types';
-import { SET_USER } from '../actions/user';
+import { SET_DRINK } from '../actions/drink';
 
 export type State = {
-    name: object
+  drink: object
 }
 
 const initialState = {
-  user: {},
+  drink: {},
 };
 
 export default function (state:State = initialState, action:Action): State {
-  if (action.type === SET_USER) {
+
+  if (action.type === SET_DRINK) {
     return {
       ...state,
-      user: action.payload,
+      drink: action.payload,
     };
   }
   return state;

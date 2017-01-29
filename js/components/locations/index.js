@@ -10,6 +10,7 @@ import { actions } from 'react-native-navigation-redux-helpers';
 import { openDrawer } from '../../actions/drawer';
 import { setIndex } from '../../actions/list';
 import myTheme from '../../themes/base-theme';
+import Exponent from 'exponent';
 
 const {
   popRoute
@@ -104,6 +105,8 @@ class Locations extends Component {
   }
 
   render() {
+    // let expCurrent = Exponent.Location.getCurrentPositionAsync(false);
+    // console.log(expCurrent);
     return (
       <View style={styles.container}>
         <Header sytle={styles.header}>

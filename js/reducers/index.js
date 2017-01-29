@@ -5,6 +5,7 @@ import drawer from './drawer';
 import cardNavigation from './cardNavigation';
 import user from './user';
 import list from './list';
+import drink from './drink';
 
 export default combineReducers({
 
@@ -12,4 +13,5 @@ export default combineReducers({
   user,
   list,
   cardNavigation,
+  drink
 });
