@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
+import { Image, Alert } from 'react-native';
+import { Font } from 'exponent';
 import { connect } from 'react-redux';
 import { actions } from 'react-native-navigation-redux-helpers';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { Container, Header, Title, Text, Content, InputGroup, Input, Button, Icon, View } from 'native-base';
 import * as firebase from "firebase";
 import { firebaseApp } from "../authentication";
+import Exponent from 'exponent';
 
 import styles from './styles';
 
@@ -31,7 +34,8 @@ class SignUp extends Component {
       email: "",
       password: "",
       confirmPassword: "",
-      result: ""
+      result: "",
+      fontLoaded: false
     });
   }
 
@@ -41,6 +45,13 @@ class SignUp extends Component {
         this.pushToRoute('home');
       }
     });
+  }
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      'veneer': require('../../../../assets/fonts/veneer.ttf'),
+    });
+    this.setState({ fontLoaded: true });
   }
 
   pushToRoute(route) {
@@ -62,56 +73,61 @@ class SignUp extends Component {
   }
 
   render() {
+    if (!this.state.fontLoaded) {return null;}
+    const signup = this.state.fontLoaded ? "Sign Up" : null;
+    const login = this.state.fontLoaded ? "Already a member? Log In" : null;
     return (
-      <Container style={styles.container}>
-        <Header>
+      <Image source={require('../../../../images/beans2.jpg')} style={styles.container}>
+        <Header style={styles.header}>
           <Button transparent onPress={this.goBack.bind(this)}>
-            <Icon name="ios-arrow-back" style={{ fontSize: 30, lineHeight: 32 }} />
+            <Icon name='ios-arrow-back' style={{color:"#fff"}} />
           </Button>
-          <Title>Sign Up</Title>
+          <Title style={styles.headerText}>Sign Up</Title>
         </Header>
-          <Content>
-            <Image source={background} style={styles.shadow}>
-              <View style={styles.bg}>
-                <Text style={styles.feedback}>{this.state.result}</Text>
-                <InputGroup style={styles.input}>
-                  <Icon name="ios-person" />
-                  <Input
-                    style={styles.inputValue}
-                    placeholder="EMAIL"
-                    onChangeText={(text) => this.setState({ email: text })} />
-                </InputGroup>
-                <InputGroup style={styles.input}>
-                  <Icon name="ios-unlock-outline" />
-                  <Input
-                    style={styles.inputValue}
-                    placeholder="PASSWORD"
-                    secureTextEntry
-                    onChangeText={(text) => this.setState({ password: text })}
-                  />
-                </InputGroup>
-                <InputGroup style={styles.input}>
-                  <Icon name="ios-unlock-outline" />
-                  <Input
-                    style={styles.inputValue}
-                    placeholder="CONFIRM PASSWORD"
-                    secureTextEntry
-                    onChangeText={(text) => this.setState({ confirmPassword: text })}
-                  />
-                </InputGroup>
-                <Button style={styles.btn} onPress={() => this.signUp()}>
-                  <Text>Login</Text>
-                </Button>
-                <View style={styles.linkContainer}>
-                  <Button transparent
-                    onPress={() => {this.replaceRoute('logIn');}}>
-                    <Text style={styles.links}>Already a member? Log In</Text>
-                  </Button>
-                </View>
-              </View>
-            </Image>
-          </Content>
-      </Container>
+        <View style={styles.logoContainer}>
+          <Image
+            style={styles.logoImage}
+            source={{uri:'https://firebasestorage.googleapis.com/v0/b/coffee-shop-mobile.appspot.com/o/logofritzwhite.png?alt=media&token=1c9f80e9-53ca-42cd-82b9-e6ca72c25d6f'}} />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Text style={styles.feedback}>{this.state.result}</Text>
+          <InputGroup style={styles.input}>
+            <Icon name="ios-person" style={{ color:"white" }} />
+            <Input
+              style={styles.inputValue}
+              placeholder="EMAIL"
+              onChangeText={(text) => {this.setState({ email: text })}} />
+          </InputGroup>
+          <InputGroup style={styles.input}>
+            <Icon name="ios-unlock-outline" style={{ color:"white" }}/>
+            <Input
+              style={styles.inputValue}
+              placeholder="PASSWORD"
+              secureTextEntry
+              onChangeText={(text) => {this.setState({ password: text })}}
+            />
+          </InputGroup>
+          <InputGroup style={styles.input}>
+            <Icon name="ios-unlock-outline" style={{ color:"white" }} />
+            <Input
+              style={styles.inputValue}
+              placeholder="CONFIRM PASSWORD"
+              secureTextEntry
+              onChangeText={(text) => this.setState({ confirmPassword: text })}
+            />
+          </InputGroup>
+          <Button style={styles.loginBtn} onPress={() => {this.logIn()}}>
+            <Text style={styles.btnText}>{signup}</Text>
+          </Button>
+        </View>
+        <View style={styles.linkContainer}>
+          
+          <Button transparent
+            onPress={() => {this.replaceRoute('logIn');}}>
+            <Text style={styles.links}>{login}</Text>
+          </Button>
+        </View>
+      </Image>
     );
   }
 }
