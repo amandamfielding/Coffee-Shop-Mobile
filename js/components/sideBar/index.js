@@ -53,17 +53,19 @@ class SideBar extends Component {
   }
 
   render() {
-
-    const user = firebaseApp.auth().currentUser;
     let pic;
-    if (user != null) {
-      pic = user.photoURL
+    let name = "";
+    if (firebaseApp.auth().currentUser != null && this.props.user.picture != null) {
+      pic = this.props.user.picture.data.url
+      name = firebaseApp.auth().currentUser.displayName
     }
-    let profilePic = (user && pic) ? (<Image style={styles.profilePic} source={{uri: firebaseApp.auth().currentUser.photoURL}}/>) : (<Image style={styles.profilePic} source={require('../../../images/profilePicDefault.png')}/>)
+
+    let profilePic = (pic != null) ? (<Image style={styles.profilePic} source={{uri: this.props.user.picture.data.url}}/>) : (<Image style={styles.profilePic} source={require('../../../images/profilePicDefault.png')}/>)
 
     return (
       <Content style={styles.sidebar} >
         {profilePic}
+        <Text style={{color:"white", alignSelf: "center"}}>{name}</Text>
         <List style={styles.list}>
           <ListItem style={styles.listItem} button onPress={this.goToOrder.bind(this)} >
             <Text style={styles.itemText} >Place An Order</Text>
@@ -92,6 +94,7 @@ function bindAction(dispatch) {
 
 const mapStateToProps = state => ({
   navigation: state.cardNavigation,
+  user: state.user.user
 });
 
 export default connect(mapStateToProps, bindAction)(SideBar);

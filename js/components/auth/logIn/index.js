@@ -9,7 +9,7 @@ import * as firebase from "firebase";
 import { firebaseApp } from "../authentication";
 import Exponent from 'exponent';
 
-// import { setUser } from '../../actions/user';
+import { setUser } from '../../../actions/user';
 import styles from './styles';
 
 const {
@@ -22,6 +22,7 @@ const background = require('../../../../images/beans2.jpg');
 class Login extends Component {
 
   static propTypes = {
+    setUser: React.PropTypes.func,
     replaceAt: React.PropTypes.func,
     pushRoute: React.PropTypes.func,
     navigation: React.PropTypes.shape({
@@ -43,7 +44,7 @@ class Login extends Component {
   async FBlogIn() {
     const { type, token } = await Exponent.Facebook.logInWithReadPermissionsAsync(
       '1831068953774364', {
-        permissions: ['public_profile'],
+        permissions: ['public_profile', 'email', 'user_friends'],
       });
     if (type === 'success') {
       const credential = firebase.auth.FacebookAuthProvider.credential(token);
@@ -51,10 +52,12 @@ class Login extends Component {
         .catch((error) => {
           alert("error");
       });
-      const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
+      const response = await fetch(`https://graph.facebook.com/me?fields=gender,name,locale,age_range,first_name,picture.width(200).height(200),link,cover&access_token=${token}`);
+      const user = await response.json();
+      this.props.setUser(user)
       Alert.alert(
         'Logged in!',
-        `Hi ${(await response.json()).name}!`,
+        `Hi ${user.name}!`,
       );
 
     }
@@ -152,7 +155,7 @@ function bindActions(dispatch) {
   return {
     replaceAt: (routeKey, route, key) => dispatch(replaceAt(routeKey, route, key)),
     pushRoute: (route, key) => dispatch(pushRoute(route, key)),
-
+    setUser: token => dispatch(setUser(token)),
   };
 }
 
