@@ -7,6 +7,7 @@ import { Container, Header, View, Title, Content, Text, Button, Icon, Card, Card
 import { Grid, Row } from 'react-native-easy-grid';
 
 import { openDrawer } from '../../actions/drawer';
+import { setDrink } from '../../actions/drink';
 import { setIndex } from '../../actions/list';
 import myTheme from '../../themes/base-theme';
 import styles from './styles';
@@ -27,6 +28,7 @@ const {
 class Order extends Component {
 
   static propTypes = {
+    setDrink: React.PropTypes.func,
     name: React.PropTypes.string,
     list: React.PropTypes.arrayOf(React.PropTypes.string),
     setIndex: React.PropTypes.func,
@@ -55,7 +57,8 @@ class Order extends Component {
       const coffees = []
       snap.forEach(item => {
         coffees.push({
-          title: item.val().title
+          title: item.val().title,
+          sizes: item.val().sizes
         })
       })
       this.setState({ dataSource1: ds1.cloneWithRows(coffees) })
@@ -64,7 +67,8 @@ class Order extends Component {
       const teas = []
       snap.forEach(item => {
         teas.push({
-          title: item.val().title
+          title: item.val().title,
+          sizes: item.val().sizes
         })
       })
       this.setState({ dataSource2: ds2.cloneWithRows(teas) })
@@ -73,7 +77,8 @@ class Order extends Component {
       const favorites = []
       snap.forEach(item => {
         favorites.push({
-          title: item.val().title
+          title: item.val().title,
+          sizes: item.val().sizes
         })
       })
       this.setState({ dataSource3: ds3.cloneWithRows(favorites) })
@@ -82,7 +87,8 @@ class Order extends Component {
       const smoothiesList = []
       snap.forEach(item => {
         smoothiesList.push({
-          title: item.val().title
+          title: item.val().title,
+          sizes: item.val().sizes
         })
       })
       this.setState({ dataSource4: ds4.cloneWithRows(smoothiesList) })
@@ -91,7 +97,8 @@ class Order extends Component {
       const juices = []
       snap.forEach(item => {
         juices.push({
-          title: item.val().title
+          title: item.val().title,
+          sizes: item.val().sizes
         })
       })
       this.setState({ dataSource5: ds5.cloneWithRows(juices) })
@@ -105,15 +112,17 @@ class Order extends Component {
   renderRow(rowData) {
     return (
       <Card style={styles.row}>
-        <CardItem button onPress={() => this.pushRoute("options", 1)}>
+        <CardItem button onPress={() => {
+            this.pushRoute("options");
+            this.props.setDrink(rowData);
+          }}>
           <Text style={styles.rowTitle}>{rowData.title}</Text>
         </CardItem>
       </Card>
     )
   }
 
-  pushRoute(route, index) {
-    this.props.setIndex(index);
+  pushRoute(route) {
     this.props.pushRoute({ key: route, index: 1 }, this.props.navigation.key);
   }
 
@@ -198,12 +207,14 @@ function bindAction(dispatch) {
     pushRoute: (route, key) => dispatch(pushRoute(route, key)),
     reset: key => dispatch(reset([{ key: 'login' }], key, 0)),
     popRoute: key => dispatch(popRoute(key)),
+    setDrink: drink => dispatch(setDrink(drink)),
   };
 }
 
 const mapStateToProps = state => ({
   list: state.list.list,
   navigation: state.cardNavigation,
+  drink: state.drink.drink
 });
 
 export default connect(mapStateToProps, bindAction)(Order);
