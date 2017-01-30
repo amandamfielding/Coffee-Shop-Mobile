@@ -3,7 +3,7 @@ import { TouchableOpacity, ScrollView, ListView } from 'react-native';
 import { Font } from 'exponent';
 import { connect } from 'react-redux';
 import { actions } from 'react-native-navigation-redux-helpers';
-import { Container, Header, View, Title, Content, Text, Button, Icon, Card, CardItem } from 'native-base';
+import { Container, Header, View, Title, Content, Text, Button, Icon, Card, CardItem, DeckSwiper, Thumbnail } from 'native-base';
 import { Grid, Row } from 'react-native-easy-grid';
 
 import { openDrawer } from '../../actions/drawer';
@@ -24,7 +24,6 @@ const {
   pushRoute,
   popRoute
 } = actions;
-
 class Order extends Component {
 
   static propTypes = {
@@ -147,7 +146,6 @@ class Order extends Component {
               <Icon name='ios-menu' style={{color:"#fff"}} />
           </Button>
         </Header>
-
         <View contentContainerStyle={{flex:1}}>
           <ScrollView>
             <Text style={styles.menuCategory}>{yourDrinks}</Text>

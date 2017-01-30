@@ -49,7 +49,7 @@ class Options extends Component {
           </Button>
       </Header>
       <Content>
-        <Image style={styles.itemImage} source={{uri:"https://firebasestorage.googleapis.com/v0/b/coffee-shop-mobile.appspot.com/o/latte.jpg?alt=media&token=faee647b-3198-4214-bc24-35d4ab86974b"}} />
+        
           <List dataArray={sizesAndPrices}
             renderRow={(item) =>
               <ListItem>

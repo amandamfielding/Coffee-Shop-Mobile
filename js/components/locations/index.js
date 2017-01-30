@@ -96,10 +96,10 @@ class Locations extends Component {
   renderRow(rowData) {
     return (
     <View style={styles.location}>
-      <Text style={styles.locationTitle}>{rowData.title}</Text>
-      <Text>{rowData.address}</Text>
-      <Text>{rowData.phone}</Text>
-      <Text>{rowData.hours}</Text>
+      <Text style={styles.locationTitle} style={{color:"#fff", fontFamily: 'veneer', fontSize: "20"}}>{rowData.title}</Text>
+      <Text style={{color:"#fff"}}>{rowData.address}</Text>
+      <Text style={{color:"#fff"}}>{rowData.phone}</Text>
+      <Text style={{color:"#fff"}}>{rowData.hours}</Text>
     </View>
   );
   }
@@ -109,13 +109,13 @@ class Locations extends Component {
     // console.log(expCurrent);
     return (
       <View style={styles.container}>
-        <Header sytle={styles.header}>
+        <Header style={styles.header}>
           <Button transparent onPress={() => this.goBack()}>
-            <Icon name='ios-arrow-back' />
+            <Icon name='ios-arrow-back' style={{color:"#fff"}} />
           </Button>
-          <Title>Locations</Title>
+          <Title style={styles.headerText}>Locations</Title>
           <Button transparent onPress={this.props.openDrawer}>
-              <Icon name='ios-menu' />
+              <Icon name='ios-menu' style={{color:"#fff"}} />
           </Button>
         </Header>
         <View
@@ -142,6 +142,13 @@ class Locations extends Component {
                 longitude: -122.120401
               }}
               title="Lafayette Coffee Shop"
+            />
+            <MapView.Marker
+              coordinate={{
+                latitude: 37.8512893,
+                longitude: -122.0310501
+              }}
+              title="Alamo Coffee Shop"
             />
           </MapView>
         </View>
