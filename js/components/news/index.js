@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { Image, View, StyleSheet, PanResponder, Animated, TouchableOpacity,Platform} from 'react-native'
 import { actions } from 'react-native-navigation-redux-helpers'
-import { Container ,Content , Text, Card, CardItem, DeckSwiper, Thumbnail,Grid ,Row, Icon,Button} from 'native-base';
+import { Container ,Content , Text, Card, CardItem, DeckSwiper, Thumbnail, Grid ,Row, Icon,Button} from 'native-base';
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
 import styles from './styles';

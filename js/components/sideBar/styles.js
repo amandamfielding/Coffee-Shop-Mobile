@@ -1,7 +1,9 @@
 
 const React = require('react-native');
 
-const { StyleSheet } = React;
+const { StyleSheet, Dimensions } = React;
+
+const deviceWidth = Dimensions.get('window').width;
 
 module.exports = StyleSheet.create({
   sidebar: {
@@ -11,21 +13,34 @@ module.exports = StyleSheet.create({
     backgroundColor: '#0b0909',
   },
   list: {
-  	marginLeft: 0,
+  	//marginLeft: 0,
+    flex: 3,
+    flexDirection: "column",
+    //marginVertical: 15,
   },
   listItem: {
-  	marginLeft: 0,
-  	padding:9,
-  	paddingLeft: 9,
+  	//marginLeft: 0,
+  	//padding:9,
+  	//paddingLeft: 9,
+    width: deviceWidth / 1.5
   },
   itemText: {
   color:"#fff",
+  //textAlign: "center",
+  fontFamily: 'veneer',
+  fontSize: 18,
+  paddingTop: 12,
+  },
+  profile: {
+    flex: 1,
+    flexDirection: "column",
   },
   profilePic: {
     backgroundColor: "white",
     width: 200,
     height: 200,
     resizeMode: "contain",
-    alignSelf: "center"
+    alignSelf: "center",
+    borderRadius: 100
   }
 });

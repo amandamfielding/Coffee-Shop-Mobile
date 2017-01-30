@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, Text, View, Platform, TouchableOpacity, Image } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { Button, Icon, Header } from 'native-base';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { openDrawer } from '../../actions/drawer';
 
@@ -16,9 +16,9 @@ const TabBar = React.createClass({
 
   render() {
     return <View style={[styles.tabs, this.props.style ]}>
-      <TouchableOpacity transparent onPress={() => this.props.open()} style={styles.tab}>
-        <Icon name="md-menu" style={styles.menuBtn} />
-      </TouchableOpacity>
+      <Button transparent onPress={() => this.props.open()} style={styles.tab}>
+          <Icon name='ios-menu' style={{color:"#fff"}} />
+      </Button>
       {this.props.tabs.map((tab, i) => {
         return <TouchableOpacity key={tab} onPress={() => this.props.goToPage(i)} style={styles.tab}>
         <View style={[(tab === 'md-flame' && (this.props.activeTab === 1)) ? {} : styles.iconBtn,{backgroundColor: (tab === 'md-flame' && (this.props.activeTab === 1) ) ? 'transparent' : (this.props.activeTab === i ? '#E7B220' : 'lightgrey')}]}>
@@ -38,9 +38,6 @@ const TabBar = React.createClass({
       })}
     </View>;
   }
-
-
-
 });
 
 const styles = StyleSheet.create({
@@ -59,7 +56,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   menuBtn: {
-    fontSize: 24
+    fontSize: 24,
   },
   iconBtnA: {
     backgroundColor: '#D9E0E4',
@@ -70,7 +67,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   tabs: {
-    backgroundColor: '#FFF',
+    backgroundColor: '#000',
     height: (Platform.OS=='android') ? 55 : 70,
     flexDirection: 'row',
     paddingTop: (Platform.OS=='android') ? 15 : 30,

@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Image} from 'react-native';
-import { Content, Text, List, ListItem } from 'native-base';
-import { firebaseApp } from "../auth/authentication"
-
+import { Image, View } from 'react-native';
+import { Content, Text, List, ListItem, ProgressBar } from 'native-base';
+import { firebaseApp } from "../auth/authentication";
+import { Font } from 'exponent';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { actions } from 'react-native-navigation-redux-helpers';
 import { setIndex } from '../../actions/list';
 import { closeDrawer } from '../../actions/drawer';
 import navigateTo from '../../actions/sideBarNav';
 import myTheme from '../../themes/base-theme';
+import Exponent from 'exponent';
 
 import styles from './styles';
 
@@ -25,7 +27,11 @@ class SideBar extends Component {
   }
 
   constructor(props) {
-    super(props)
+    super(props);
+    this.state = {
+      fontLoaded: false,
+      progress: 30
+    };
   }
 
   navigateTo(route) {
@@ -52,7 +58,18 @@ class SideBar extends Component {
     this.props.closeDrawer();
   }
 
+  async componentDidMount() {
+    await Font.loadAsync({
+      'veneer': require('../../../assets/fonts/veneer.ttf'),
+    });
+    this.setState({ fontLoaded: true });
+  }
+
   render() {
+    if (!this.state.fontLoaded) {return null;}
+    const order = this.state.fontLoaded ? "Place An Order" : null;
+    const locations = this.state.fontLoaded ? "Find A Store" : null;
+    const signout = this.state.fontLoaded ? "Sign Out" : null;
     let pic;
     let name = "";
     if (firebaseApp.auth().currentUser != null && this.props.user.picture != null) {
@@ -64,17 +81,20 @@ class SideBar extends Component {
 
     return (
       <Content style={styles.sidebar} >
-        {profilePic}
-        <Text style={{color:"white", alignSelf: "center"}}>{name}</Text>
+        <View style={styles.profile}>
+          {profilePic}
+          <Text style={{color:"white", alignSelf: "center", fontFamily: "veneer", fontSize: 24, paddingTop: 12 }}>{name}</Text>
+        </View>
+        
         <List style={styles.list}>
           <ListItem style={styles.listItem} button onPress={this.goToOrder.bind(this)} >
-            <Text style={styles.itemText} >Place An Order</Text>
+            <Text style={styles.itemText} >{order}</Text>
           </ListItem>
           <ListItem style={styles.listItem} button onPress={this.goToLocations.bind(this)} >
-            <Text style={styles.itemText}>Locations</Text>
+            <Text style={styles.itemText}>{locations}</Text>
           </ListItem>
           <ListItem style={styles.listItem} button onPress={() => this.signOut()} >
-            <Text style={styles.itemText}>Sign Out</Text>
+            <Text style={styles.itemText}>{signout}</Text>
           </ListItem>
         </List>
       </Content>

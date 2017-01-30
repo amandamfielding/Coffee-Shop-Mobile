@@ -30,18 +30,6 @@ class Login extends Component {
     }),
   }
 
-  async componentDidMount() {
-    await Font.loadAsync({
-      'veneer': require('../../../../assets/fonts/veneer.ttf'),
-    });
-    this.setState({ fontLoaded: true });
-    firebaseApp.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.replaceRoute('home');
-      }
-    });
-  }
-
   constructor(props) {
     super(props);
     this.state = ({
@@ -99,6 +87,13 @@ class Login extends Component {
     });
   }
 
+  async componentDidMount() {
+    await Font.loadAsync({
+      'veneer': require('../../../../assets/fonts/veneer.ttf'),
+    });
+    this.setState({ fontLoaded: true });
+  }
+
 
   render() {
     if (!this.state.fontLoaded) {return null;}
@@ -114,7 +109,7 @@ class Login extends Component {
           source={{uri:'https://firebasestorage.googleapis.com/v0/b/coffee-shop-mobile.appspot.com/o/logofritzwhite.png?alt=media&token=1c9f80e9-53ca-42cd-82b9-e6ca72c25d6f'}} />
         </View>
         <View style={styles.buttonContainer}>
-            <Button onPress={() => {this.FBlogIn()}} style={styles.FBbutton}>
+          <Button onPress={() => {this.FBlogIn()}} style={styles.FBbutton}>
               <View style={styles.FBflex}>
                 <Text style={styles.FBtext}>{fb}</Text>
                 <FontAwesome name="facebook-f" size={24} color="#ffffff" />
@@ -140,8 +135,8 @@ class Login extends Component {
           <Button style={styles.loginBtn} onPress={() => {this.logIn()}}>
             <Text style={styles.btnText}>{login}</Text>
           </Button>
-          </View>
-          <View style={styles.linkContainer}>
+        </View>
+        <View style={styles.linkContainer}>
             <Button transparent
               onPress={() => {this.pushToRoute('signUp');}}>
               <Text style={styles.links}>{signup}</Text>

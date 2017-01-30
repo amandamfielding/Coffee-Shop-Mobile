@@ -59,7 +59,7 @@ class Home extends Component {
         <Tabs
           locked={true}
           initialPage={0}
-          style={{backgroundColor: '#F5F7FB'}}
+          style={{backgroundColor: '#000'}}
           renderTabBar={() => <CustomTabBar open={this.open.bind(this)}/>}
           >
           <News tabLabel="md-flame" />

@@ -14,6 +14,7 @@
       },
       "2": {
         "title": "Espresso",
+        "imageUrl": "https://firebasestorage.googleapis.com/v0/b/coffee-shop-mobile.appspot.com/o/drinks%2F1Espresso.jpg?alt=media&token=a1ab6e77-e7bc-4e2c-9818-3cf9b667241a",
         "sizes": [
         {"1oz": {
             "price": 2.95
@@ -88,6 +89,7 @@
       },
       "10": {
         "title": "Cold Brew Coffee",
+        "imageUrl": "https://firebasestorage.googleapis.com/v0/b/coffee-shop-mobile.appspot.com/o/drinks%2F1ColdBrew.jpg?alt=media&token=0595ff7b-a8be-472a-a379-4824e900f3d8",
         "sizes": [
         {"10oz": {
             "price": 3.25
@@ -101,6 +103,7 @@
     "tea": {
       "11": {
         "title": "Chai Latte",
+        "imageUrl": "https://firebasestorage.googleapis.com/v0/b/coffee-shop-mobile.appspot.com/o/drinks%2F1ChaiLatte.jpg?alt=media&token=d498d68d-a8d6-4e30-bfc2-fb53ad534d31",
         "sizes": [
         {"10oz": {
             "price": 4.5
@@ -214,6 +217,7 @@
       },
       "20": {
         "title": "Coconut Orange Iced Latte",
+        "imageUrl": "https://firebasestorage.googleapis.com/v0/b/coffee-shop-mobile.appspot.com/o/drinks%2F1CoconutOrangeLatte.jpg?alt=media&token=df852f73-a9c3-4d5c-a658-367ca6d86130",
         "sizes": [
           {"10oz": {
             "price": 4.5
@@ -368,6 +372,7 @@
       },
       "33": {
         "title": "Detox",
+        "imageUrl": "https://firebasestorage.googleapis.com/v0/b/coffee-shop-mobile.appspot.com/o/drinks%2F1DetoxJuice.jpg?alt=media&token=78dcca1d-ad5c-4ce7-96f3-f702bdd7963d",
         "ingredients": "carrot, cucumber, apple, ginger, lemon juice",
         "sizes": [
           {"16oz": {
@@ -385,7 +390,7 @@
       "address": "1321 Locust Street Walnut Creek, CA 94596",
       "lat": 37.897735,
       "lng": -122.061793,
-			"phone": 9259383855
+			"phone": "925-938-3855"
     },
     "2": {
 			"hours": "SUN-THU: 6:30-9, FRI-SAT: 6:30-9:30",
@@ -393,7 +398,15 @@
       "address": "50 Lafayette Circle Lafayette, CA 94549",
       "lat": 37.890723,
       "lng": -122.120401,
-			"phone": 9259629537
+			"phone": "925-962-9537"
+    },
+    "3": {
+      "hours": "MON-FRI 6:00-5:00 SAT-SUN 7:00-5:00",
+      "title": "Alamo",
+      "address": "3160 Danville Blvd Alamo, CA 94507",
+      "lat": 37.852077,
+      "lng": -122.031629,
+      "phone": "925-820-0400"
     }
   }
 }
