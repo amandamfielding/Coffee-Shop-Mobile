@@ -38,8 +38,8 @@ class SideBar extends Component {
     this.props.navigateTo(route, 'home');
   }
 
-  goToOrder() {
-    this.props.pushRoute({ key: 'order', index: 1 }, this.props.navigation.key);
+  goToNews() {
+    this.props.pushRoute({ key: 'news', index: 1 }, this.props.navigation.key);
     this.props.closeDrawer();
   }
 
@@ -67,7 +67,7 @@ class SideBar extends Component {
 
   render() {
     if (!this.state.fontLoaded) {return null;}
-    const order = this.state.fontLoaded ? "Place An Order" : null;
+    const news = this.state.fontLoaded ? "What's new?" : null;
     const locations = this.state.fontLoaded ? "Find A Store" : null;
     const signout = this.state.fontLoaded ? "Sign Out" : null;
     let pic;
@@ -85,10 +85,10 @@ class SideBar extends Component {
           {profilePic}
           <Text style={{color:"white", alignSelf: "center", fontFamily: "veneer", fontSize: 24, paddingTop: 12 }}>{name}</Text>
         </View>
-        
+
         <List style={styles.list}>
-          <ListItem style={styles.listItem} button onPress={this.goToOrder.bind(this)} >
-            <Text style={styles.itemText} >{order}</Text>
+          <ListItem style={styles.listItem} button onPress={this.goToNews.bind(this)} >
+            <Text style={styles.itemText} >{news}</Text>
           </ListItem>
           <ListItem style={styles.listItem} button onPress={this.goToLocations.bind(this)} >
             <Text style={styles.itemText}>{locations}</Text>

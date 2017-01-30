@@ -125,10 +125,6 @@ class Order extends Component {
     this.props.pushRoute({ key: route, index: 1 }, this.props.navigation.key);
   }
 
-  goBack () {
-    this.props.popRoute(this.props.navigation.key);
-  }
-
   render() {
     if (!this.state.fontLoaded) {return null;}
     const yourDrinks = this.state.fontLoaded ? "Your Drinks" : null;
@@ -137,15 +133,6 @@ class Order extends Component {
     const forgot = this.state.fontLoaded ? "Forgot Password?" : null;
     return (
       <Container theme={myTheme} style={styles.container}>
-        <Header style={styles.header}>
-          <Button transparent onPress={() => this.goBack()}>
-            <Icon name='ios-arrow-back' style={{color:"#fff"}} />
-          </Button>
-          <Title style={styles.headerText}>Place an Order</Title>
-          <Button transparent onPress={this.props.openDrawer}>
-              <Icon name='ios-menu' style={{color:"#fff"}} />
-          </Button>
-        </Header>
         <View contentContainerStyle={{flex:1}}>
           <ScrollView>
             <Text style={styles.menuCategory}>{yourDrinks}</Text>

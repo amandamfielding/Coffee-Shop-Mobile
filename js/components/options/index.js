@@ -44,9 +44,6 @@ class Options extends Component {
             <Icon name='ios-arrow-back' style={{color:"#fff"}} />
           </Button>
           <Title style={styles.headerText}>{this.props.drink.title}</Title>
-          <Button transparent onPress={this.props.openDrawer}>
-              <Icon name='ios-menu' style={{color:"#fff"}} />
-          </Button>
       </Header>
       <Content>
         <Image style={styles.itemImage} source={{uri:"https://firebasestorage.googleapis.com/v0/b/coffee-shop-mobile.appspot.com/o/latte.jpg?alt=media&token=faee647b-3198-4214-bc24-35d4ab86974b"}} />

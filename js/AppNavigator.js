@@ -13,6 +13,7 @@ import ForgotPassword from './components/auth/forgotPassword';
 import Order from './components/order/';
 import Options from './components/options/';
 import Cart from './components/cart/';
+import News from './components/news/';
 import Locations from './components/locations/';
 import Payment from './components/payment';
 import Home from './components/home';
@@ -89,6 +90,8 @@ class AppNavigator extends Component {
         return <ForgotPassword />;
       case 'order':
         return <Order />;
+      case 'news':
+        return <News />;
       case 'locations':
         return <Locations />;
       case 'cart':
