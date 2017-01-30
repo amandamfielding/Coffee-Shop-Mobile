@@ -21,17 +21,18 @@ const TabBar = React.createClass({
       </Button>
       {this.props.tabs.map((tab, i) => {
         return <TouchableOpacity key={tab} onPress={() => this.props.goToPage(i)} style={styles.tab}>
-        <View style={[(tab === 'md-flame' && (this.props.activeTab === 1)) ? {} : styles.iconBtn,{backgroundColor: (tab === 'md-flame' && (this.props.activeTab === 1) ) ? 'transparent' : (this.props.activeTab === i ? '#E7B220' : 'lightgrey')}]}>
+        <View style={[(tab === 'md-flame' && (this.props.activeTab === 1)) ? styles.iconBtn
+          : styles.iconBtn,{backgroundColor: (tab === 'md-flame' && (this.props.activeTab === 1) )
+          ? 'lightgrey'
+          : (this.props.activeTab === i ? '#E7B220' : 'lightgrey')}]}>
           {( (tab === 'md-cart'))  ?
-          <Icon
-            name={tab}
-            size={20}
-            color={'#FFF'}
-            ref={(icon) => { this.tabIcons[i] = icon; }}
-            style={{marginTop: (tab === 'md-cart') ? 4 : undefined}}
-          />
+          <FontAwesome name="shopping-cart"
+            style={{fontSize:24}}
+             />
           :
-          <FontAwesome name="coffee" />
+          <FontAwesome name="coffee"
+            style={{fontSize:24}}
+             />
           }
           </View>
         </TouchableOpacity>;
@@ -48,23 +49,15 @@ const styles = StyleSheet.create({
     paddingBottom: 10
   },
   iconBtn: {
-    backgroundColor: '#D9E0E4',
-    width: 30,
-    height: 30,
-    borderRadius: 15,
+    backgroundColor: '#E7B220',
+    width: 45,
+    height: 45,
+    borderRadius: 22,
     alignItems: 'center',
     justifyContent: 'center'
   },
   menuBtn: {
     fontSize: 24,
-  },
-  iconBtnA: {
-    backgroundColor: '#D9E0E4',
-    width: 60,
-    height: 30,
-    borderRadius: 15,
-    alignItems: 'center',
-    justifyContent: 'center'
   },
   tabs: {
     backgroundColor: '#000',
