@@ -8,7 +8,7 @@ import { actions } from 'react-native-navigation-redux-helpers';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { Container, Content, Icon, Button, Tabs } from 'native-base';
 import Cart from '../cart';
-import News from '../news';
+import Order from '../order';
 import Spinner from '../loaders/Spinner';
 import CustomTabBar from './tabBar';
 import { openDrawer } from '../../actions/drawer';
@@ -62,7 +62,7 @@ class Home extends Component {
           style={{backgroundColor: '#000'}}
           renderTabBar={() => <CustomTabBar open={this.open.bind(this)}/>}
           >
-          <News tabLabel="md-flame" />
+          <Order tabLabel="md-flame" />
           <Cart tabLabel="md-cart" />
         </Tabs>
       );

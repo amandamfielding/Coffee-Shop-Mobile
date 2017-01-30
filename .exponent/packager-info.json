@@ -1,8 +1,8 @@
 {
-  "exponentServerNgrokUrl": "https://cs-srd.gregfielding.coffee-shop-mobile.exp.direct",
-  "packagerNgrokUrl": "https://packager.cs-srd.gregfielding.coffee-shop-mobile.exp.direct",
-  "ngrokPid": 71802,
-  "exponentServerPort": 19000,
-  "packagerPort": 19002,
-  "packagerPid": 71782
+  "exponentServerNgrokUrl": "https://cs-srd.amandamfielding.coffeeshopmobile2.exp.direct",
+  "packagerNgrokUrl": "https://packager.cs-srd.amandamfielding.coffeeshopmobile2.exp.direct",
+  "ngrokPid": 5631,
+  "exponentServerPort": 19002,
+  "packagerPort": 19003,
+  "packagerPid": 5617
 }

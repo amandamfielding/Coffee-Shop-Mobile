@@ -20,6 +20,7 @@ const {
 class Cart extends Component {
 
   static propTypes = {
+    popRoute: React.PropTypes.func,
     name: React.PropTypes.string,
     list: React.PropTypes.arrayOf(React.PropTypes.string),
     setIndex: React.PropTypes.func,

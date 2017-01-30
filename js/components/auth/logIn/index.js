@@ -22,6 +22,7 @@ const background = require('../../../../images/beans2.jpg');
 class Login extends Component {
 
   static propTypes = {
+    popRoute: React.PropTypes.func,
     setUser: React.PropTypes.func,
     replaceAt: React.PropTypes.func,
     pushRoute: React.PropTypes.func,

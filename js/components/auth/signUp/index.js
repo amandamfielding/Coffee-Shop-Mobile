@@ -21,6 +21,7 @@ const background = require('../../../../images/beans2.jpg');
 class SignUp extends Component {
 
   static propTypes = {
+    popRoute: React.PropTypes.func,
     setUser: React.PropTypes.func,
     replaceAt: React.PropTypes.func,
     navigation: React.PropTypes.shape({
@@ -121,7 +122,7 @@ class SignUp extends Component {
           </Button>
         </View>
         <View style={styles.linkContainer}>
-          
+
           <Button transparent
             onPress={() => {this.replaceRoute('logIn');}}>
             <Text style={styles.links}>{login}</Text>
