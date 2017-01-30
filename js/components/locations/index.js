@@ -96,7 +96,7 @@ class Locations extends Component {
   renderRow(rowData) {
     return (
     <View style={styles.location}>
-      <Text style={styles.locationTitle} style={{color:"#fff", fontFamily: 'veneer', fontSize: "20"}}>{rowData.title}</Text>
+      <Text style={styles.locationTitle} style={{color:"#fff", fontFamily: 'veneer', fontSize: 20}}>{rowData.title}</Text>
       <Text style={{color:"#fff"}}>{rowData.address}</Text>
       <Text style={{color:"#fff"}}>{rowData.phone}</Text>
       <Text style={{color:"#fff"}}>{rowData.hours}</Text>
