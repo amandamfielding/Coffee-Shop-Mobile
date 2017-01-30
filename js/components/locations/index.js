@@ -110,13 +110,13 @@ class Locations extends Component {
     return (
       <View style={styles.container}>
         <Header style={styles.header}>
-          <Button transparent onPress={() => this.goBack()}>
+          <Button transparent onPress={() => {
+              this.goBack();
+              this.props.openDrawer();
+            }}>
             <Icon name='ios-arrow-back' style={{color:"#fff"}} />
           </Button>
           <Title style={styles.headerText}>Locations</Title>
-          <Button transparent onPress={this.props.openDrawer}>
-              <Icon name='ios-menu' style={{color:"#fff"}} />
-          </Button>
         </Header>
         <View
           style={styles.mapContainer}
