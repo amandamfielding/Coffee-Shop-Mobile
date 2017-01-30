@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, ScrollView, ListView, Image } from 'react-native';
+import { TouchableHighlight, View, ScrollView, ListView, Image } from 'react-native';
 import { Font } from 'exponent';
 import { connect } from 'react-redux';
 import { actions } from 'react-native-navigation-redux-helpers';
-import { Container, Header, View, List, ListItem, Title, Content, Text, Button, Icon, Card, CardItem } from 'native-base';
+import { Container, Header, List, ListItem, Title, Content, Text, Button, Icon, Card, CardItem } from 'native-base';
 import { Grid, Row } from 'react-native-easy-grid';
 
 import { openDrawer } from '../../actions/drawer';
@@ -49,9 +49,19 @@ class Options extends Component {
         <Image style={styles.itemImage} source={{uri:"https://firebasestorage.googleapis.com/v0/b/coffee-shop-mobile.appspot.com/o/latte.jpg?alt=media&token=faee647b-3198-4214-bc24-35d4ab86974b"}} />
           <List dataArray={sizesAndPrices}
             renderRow={(item) =>
-              <ListItem>
-                  <Text style={{color:"white"}}>{item}</Text>
+
+              <ListItem
+                >
+                <TouchableHighlight
+                  underlayColor={'red'}
+                  >
+                  <View style={{ marginRight: 15, flex:1,flexDirection:"row",justifyContent:"space-between", paddingHorizontal: 10}}>
+                    <Text style={{color:"white"}}>{item[0]}</Text>
+                    <Text style={{color:"white"}}>${item[1]}</Text>
+                  </View>
+                  </TouchableHighlight>
               </ListItem>
+
             }>
           </List>
     </Content>
